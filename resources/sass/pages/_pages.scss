@@ -1,13 +1,21 @@
 // Pages
 // --------------------------------------------------
 
-// Frontend
-.frontend {
-    @import "frontend";
+// Page section
+.page{
+
+    // Frontend
+    // ----------------------------------------------
+
+    // Home
+    &.home {
+        @import 'home';
+    }
+
+    // Backend
+    // ----------------------------------------------
+
 }
 
-// Backend
-.backend {
-    @import "backend";
-}
+
 

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('backend.layouts.master')
 
 @section('content')
 <div class="container">
@@ -13,32 +13,23 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
-
+                    {!! Form::open(['route' => 'password.email', 'errors' => $errors]) !!}
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
+                            {!! Form::label('email', __('E-Mail Address'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
+                                {!! Form::text('email', old('email'), ['class' => 'form-control']) !!}
                                 @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="validation-error">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
-                                </button>
+                                {!! Form::submit(__('Send Password Reset Link'), ['class' => 'btn btn-primary']) !!}
                             </div>
                         </div>
-                    </form>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
