@@ -1,0 +1,67 @@
+version: "3.1"
+services:
+  app:
+    container_name: PROJECTNAME-app
+    build:
+      context: ./
+      dockerfile: "./docker/app/Dockerfile"
+    working_dir: /var/www/html
+    volumes:
+      - ./:/var/www/html:cached
+      - ./node_modules:/var/www/html/node_modules
+      - ./public:/var/www/html/public:delegated
+    environment:
+      - "DB_PORT=3306"
+      - "DB_HOST=mariadb"
+    depends_on:
+      - mariadb
+    networks:
+      - PROJECTNAME-network
+  web:
+    container_name: PROJECTNAME-web
+    build:
+      context: ./
+      dockerfile: "./docker/web/Dockerfile"
+    working_dir: /var/www/html
+    volumes:
+      - ./public:/var/www/html/public:delegated
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - mariadb
+      - app
+    networks:
+      - PROJECTNAME-network
+  mariadb:
+    container_name: PROJECTNAME-mariadb
+    build:
+      context: ./
+      dockerfile: "./docker/mariadb/Dockerfile"
+    volumes:
+      - mariadbdata:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: secret
+    ports:
+      - 3306:3306
+    networks:
+      - PROJECTNAME-network
+  redis:
+    image: redis:4-alpine
+    container_name: PROJECTNAME-redis
+    ports:
+      - 6379:6379
+    volumes:
+      - redis:/data
+    networks:
+      - PROJECTNAME-network
+volumes:
+  mariadbdata:
+    driver: local
+  redis:
+    driver: local
+networks:
+  PROJECTNAME-network:

@@ -1,0 +1,14 @@
+// Settings / Mediaqueries
+// --------------------------------------------------
+
+// Sass-mq 5.0.1
+@import '~sass-mq/mq';
+
+// Breakpoints
+$mq-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    m: 768px,
+    l: 992px,
+    xl: 1200px,
+);
