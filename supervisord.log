@@ -13,3 +13,7 @@
 2020-04-16 08:01:05,095 INFO supervisord started with pid 1
 2020-04-16 08:01:06,098 INFO spawned: 'php-fpm' with pid 7
 2020-04-16 08:01:07,270 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2020-05-20 07:05:36,318 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2020-05-20 07:05:36,329 INFO supervisord started with pid 1
+2020-05-20 07:05:37,332 INFO spawned: 'php-fpm' with pid 7
+2020-05-20 07:05:38,513 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)

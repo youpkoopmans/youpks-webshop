@@ -12,14 +12,22 @@ Route::prefix('dashboard')
     Route::name('backend')
         ->group(function () {
 
-        // Page Routes
-    //    Route::middleware(['auth'])->group(function () {
-            include 'pages.php';
-    //    });
+        // Home
+        Route::name('.home')
+            ->group(function () {
 
-        // Resouce Routes
-        include 'resources.php';
+                include 'home.php';
 
+            });
+
+        // Product
+        Route::name('.product')
+            ->prefix('product')
+            ->group(function () {
+
+            include 'product.php';
+
+        });
     });
 });
 

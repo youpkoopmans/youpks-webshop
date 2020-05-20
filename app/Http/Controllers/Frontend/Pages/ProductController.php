@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Frontend\Pages;
 
-use App\Models\Article;
+use App\Models\Product;
 
 
-class ArticleController
+class ProductController
 {
     /**
-     * Display a listing of the resource.
+     * Display the index page of product.
      *
      * @return \Illuminate\Http\Response
      */
@@ -18,12 +18,12 @@ class ArticleController
     }
 
     /**
-     * Display the specified resource.
+     * Display the depth page of product.
      *
-     * @param  \App\Models\Article  $article
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Article $article)
+    public function show(Product $product)
     {
         //
     }

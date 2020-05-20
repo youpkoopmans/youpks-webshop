@@ -2,30 +2,36 @@
 
 namespace App\Validation;
 
-use App\Models\Article;
+use App\Models\Product;
 
-class ArticleRules
+class ProductRules
 {
-    /** @var Article */
-    protected $article;
+    /** @var Product */
+    protected $product;
 
-    public function __construct(Article $article)
+    public function __construct(Product $product)
     {
-        $this->article = $article;
+        $this->product = $product;
     }
 
-    static public function makeStore(): array
+    static public function store(): array
     {
         return [
-
+            'title' => 'required',
+            'slug' => 'required',
+            'intro' => 'required|min:5',
+            'body' => 'required|min:5',
         ];
 
     }
 
-    static public function makeUpdate(): array
+    static public function update(): array
     {
         return [
-
+            'title' => 'required',
+            'slug' => 'required',
+            'intro' => 'required|min:5',
+            'body' => 'required|min:5',
         ];
 
     }
