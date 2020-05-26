@@ -51,8 +51,8 @@
         <div class="form-group row">
             {!! Form::label('image', 'Image', ['class' => 'col-md-4 col-form-label text-md-right']) !!}
             <div class="col-md-8">
-                @if(isset($product))
-                    <img src="{{asset($product->image)}}" alt="">
+                @if(isset($product->image))
+                    <img src="{{asset($product->image)}}" alt="{{$product->title}}" class="img-fluid">
                 @endif
                 {!! Form::file('image') !!}
                 @error('image')

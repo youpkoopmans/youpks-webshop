@@ -30,7 +30,7 @@ trait CommonFields
      */
     public function setSlug($attributes): array
     {
-        $slug = Str::slug($attributes['title'] . ($this->model->whereTitle($attributes['title'])->exists() ? \Carbon\Carbon::now()->format('-d-m-Y') : ''));
+        $slug = Str::slug($attributes['title'] . ($this->model->whereTitle($attributes['title'])->exists() ? Carbon::now()->format('-d-m-Y') : ''));
         $attributes = array_merge($attributes, ['slug' => $slug]);
 
         return $attributes;
