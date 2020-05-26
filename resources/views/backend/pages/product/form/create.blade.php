@@ -13,7 +13,7 @@
             </div>
         @endif
 
-        {!! Form::open(['route' => 'backend.product.store', 'errors' => $errors]) !!}
+        {!! Form::open(['route' => 'backend.product.store', 'files' => true, 'errors' => $errors]) !!}
 
         @include('backend.pages.product.form.elements')
 

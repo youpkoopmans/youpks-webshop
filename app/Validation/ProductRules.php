@@ -18,9 +18,9 @@ class ProductRules
     {
         return [
             'title' => 'required',
-            'slug' => 'required',
             'intro' => 'required|min:5',
             'body' => 'required|min:5',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
 
     }
@@ -29,10 +29,16 @@ class ProductRules
     {
         return [
             'title' => 'required',
-            'slug' => 'required',
             'intro' => 'required|min:5',
             'body' => 'required|min:5',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
+    }
 
+    static public function destroy(): array
+    {
+        return [
+            'id' => 'required'
+        ];
     }
 }

@@ -3,25 +3,44 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Product;
+use App\Repositories\ProductRepositoryInterface;
 use App\Validation\ProductRules;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Validation\ValidationException;
+use Illuminate\View\View;
 
 class ProductController
 {
     use ValidatesRequests;
 
     /**
+     * @var ProductRepositoryInterface
+     */
+    private $productRepository;
+
+    /**
+     * ProductController constructor.
+     * @param ProductRepositoryInterface $productRepository
+     */
+    public function __construct(ProductRepositoryInterface $productRepository)
+    {
+        $this->productRepository = $productRepository;
+    }
+
+    /**
      * Display a listing of the product.
      *
+     * @return Application|Factory|View
      */
     public function index()
     {
-        $products = Product::all();
-        $data = [
-            'products' => $products,
-        ];
-        return view('backend.pages.product.index')->with($data);
+        $products = $this->productRepository->all();
+
+        return view('backend.pages.product.index')->with(compact('products'));
     }
 
     /**
@@ -36,13 +55,14 @@ class ProductController
     /**
      * Store a newly created product in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param Request $request
+     * @return RedirectResponse
+     * @throws ValidationException
      */
     public function store(Request $request)
     {
-        $this->validate($request, ProductRules::store());
-        Product::create($request->request->all());
+        $validator = $this->validate($request, ProductRules::store());
+        $this->productRepository->store($validator, $request);
 
         return redirect()->route('backend.product.index');
     }
@@ -50,29 +70,28 @@ class ProductController
     /**
      * Show the form for editing the specified product.
      *
-     * @param  \App\Models\Product  $product
+     * @param Product $product
+     * @return Application|Factory|View
      */
     public function edit(Product $product)
     {
-        $product = Product::findOrFail($product->id);
-        $data = [
-            'product' => $product,
-        ];
-        return view('backend.pages.product.form.edit')->with($data);
+        $product = $this->productRepository->findOrFail($product->id);
+
+        return view('backend.pages.product.form.edit')->with(compact('product'));
     }
 
     /**
      * Update the specified product in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\RedirectResponse
+     * @param Request $request
+     * @param Product $product
+     * @return RedirectResponse
+     * @throws ValidationException
      */
     public function update(Request $request, Product $product)
     {
-        $product = Product::findOrFail($product->id);
-        $this->validate($request, ProductRules::update());
-        $product->update($request->request->all());
+        $validator = $this->validate($request, ProductRules::store());
+        $this->productRepository->edit($product, $validator, $request);
 
         return redirect()->route('backend.product.index');
     }
@@ -80,13 +99,14 @@ class ProductController
     /**
      * Remove the specified product from storage.
      *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\RedirectResponse
+     * @param Request $request
+     * @return RedirectResponse
+     * @throws ValidationException
      */
-    public function destroy(Product $product)
+    public function destroy(Request $request)
     {
-        $product = Product::findOrFail($product->id);
-        $product->delete();
+        $validator = $this->validate($request, ProductRules::destroy());
+        $this->productRepository->destroy($validator);
 
         return redirect()->route('backend.product.index');
     }

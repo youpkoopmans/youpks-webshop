@@ -1,8 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Frontend\Pages\HomeController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,10 +10,6 @@ use App\Http\Controllers\Frontend\Pages\HomeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-// Home
-Route::get('/', [HomeController::class, 'index'])
-    ->name('home');
 
 // Backend Routes
 include 'backend/backend.php';

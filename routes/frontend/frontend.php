@@ -3,10 +3,16 @@
 use Illuminate\Support\Facades\Route;
 
 // Frontend Routes
-Route::name('.frontend')
+Route::name('frontend')
     ->group(function () {
 
-    // Page Routes
-    include 'pages.php';
+        // Home
+        Route::name('.home')
+            ->group(function () {
 
-});
+                include 'home.php';
+
+            });
+
+
+    });

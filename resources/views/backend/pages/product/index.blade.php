@@ -17,14 +17,16 @@
             <tr>
                 <th class="w-25">ID</th>
                 <th>Title</th>
+                <th>Active</th>
                 <th colspan="2" class="w-25">Options</th>
             </tr>
             @foreach($products as $product)
                 <tr>
                     <td>{{ $product->id }}</td>
                     <td>{{ $product->title }}</td>
+                    <td>{!! $product->active !!}</td>
                     <td><a class="btn btn-dark" href="{{ route('backend.product.edit', $product->id) }}">Edit</a></td>
-                    <td><a class="btn btn-danger" href="{{ route('backend.product.destroy', $product->id) }}">Delete</a></td>
+                    <td><button data-id="{{$product->id}}" class="btn btn-danger delete-product">Delete</button></td>
                 </tr>
             @endforeach
         </table>

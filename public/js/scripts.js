@@ -53440,6 +53440,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/libraries/bootstrap.js");
 
 __webpack_require__(/*! ./slick-slider */ "./resources/js/libraries/slick-slider.js");
 
+var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")["default"];
+
 /***/ }),
 
 /***/ "./resources/js/libraries/slick-slider.js":
@@ -53464,7 +53466,18 @@ __webpack_require__(/*! slick-carousel/slick/slick */ "./node_modules/slick-caro
 __webpack_require__(/*! ./libraries/libraries */ "./resources/js/libraries/libraries.js"); // Custom Jquery
 
 
-$(document).ready(function () {});
+$(document).ready(function () {
+  $('.delete-product').click(function (e) {
+    var id = $(this).data('id');
+    axios.post('product/destroy', {
+      id: id
+    }).then(function () {
+      location.reload();
+    })["catch"](function (e) {
+      console.log(e);
+    });
+  });
+});
 
 /***/ }),
 
