@@ -20,6 +20,7 @@ class ProductRules
             'title' => 'required',
             'intro' => 'required|min:5',
             'body' => 'required|min:5',
+            'price' => 'required|numeric',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
 
@@ -31,6 +32,7 @@ class ProductRules
             'title' => 'required',
             'intro' => 'required|min:5',
             'body' => 'required|min:5',
+            'price' => 'required|numeric',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }

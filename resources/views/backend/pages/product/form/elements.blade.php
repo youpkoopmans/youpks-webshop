@@ -31,6 +31,16 @@
         </div>
 
         <div class="form-group row">
+            {!! Form::label('price', 'Price', ['class' => 'col-md-4 col-form-label text-md-right']) !!}
+            <div class="col-md-8">
+                {!! Form::number('price', isset($product) ? $product->price : old('price'), ['class' => 'form-control', 'step' => 'any']) !!}
+                @error('price')
+                <span class="validation-error">{{ $message }}</span>
+                @enderror
+            </div>
+        </div>
+
+        <div class="form-group row">
             {!! Form::label('published_at', 'Active', ['class' => 'col-md-4 col-form-label text-md-right']) !!}
             <div class="col-md-8">
                 <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
