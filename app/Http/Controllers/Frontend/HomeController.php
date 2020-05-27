@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Frontend;
 
 
+use Illuminate\Contracts\Support\Renderable;
+
 class HomeController
 {
     /**
      * Show the home page.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return Renderable
      */
     public function index()
     {

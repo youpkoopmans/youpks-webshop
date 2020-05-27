@@ -3,21 +3,16 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Product extends Model
+class Brand extends Model
 {
     /**
      * @var string[]
      */
     protected $fillable = [
         'title',
-        'brand_id',
         'slug',
-        'intro',
-        'body',
-        'price',
-        'image',
         'published_at'
     ];
 
@@ -29,11 +24,11 @@ class Product extends Model
     ];
 
     /**
-     * @return BelongsTo
+     * @return HasMany
      */
-    public function brand()
+    public function products()
     {
-        return $this->belongsTo(Brand::class);
+        return $this->hasMany(Product::class);
     }
 
     /**
@@ -46,5 +41,6 @@ class Product extends Model
         }
         return '<i class="fa fa-ban"></i>';
     }
+
 
 }

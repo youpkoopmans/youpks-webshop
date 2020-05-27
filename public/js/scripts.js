@@ -53477,6 +53477,16 @@ $(document).ready(function () {
       console.log(e);
     });
   });
+  $('.delete-brand').click(function (e) {
+    var id = $(this).data('id');
+    axios.post('brand/destroy', {
+      id: id
+    }).then(function () {
+      location.reload();
+    })["catch"](function (e) {
+      console.log(e);
+    });
+  });
 });
 
 /***/ }),

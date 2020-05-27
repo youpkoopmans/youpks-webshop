@@ -29,6 +29,15 @@ Route::prefix('dashboard')
                         include 'product.php';
 
                     });
+
+                // Brand
+                Route::name('.brand')
+                    ->prefix('brand')
+                    ->group(function () {
+
+                        include 'brand.php';
+
+                    });
             });
     });
 

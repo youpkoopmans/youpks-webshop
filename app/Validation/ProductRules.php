@@ -18,6 +18,7 @@ class ProductRules
     {
         return [
             'title' => 'required',
+            'brand_id' => 'required',
             'intro' => 'required|min:5',
             'body' => 'required|min:5',
             'price' => 'required|numeric',
@@ -30,6 +31,7 @@ class ProductRules
     {
         return [
             'title' => 'required',
+            'brand_id' => 'required',
             'intro' => 'required|min:5',
             'body' => 'required|min:5',
             'price' => 'required|numeric',

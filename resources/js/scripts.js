@@ -15,4 +15,15 @@ $( document ).ready(function() {
             })
     })
 
+    $('.delete-brand').click(function (e) {
+        let id = $(this).data('id');
+        axios.post('brand/destroy', {id})
+            .then(() => {
+                location.reload();
+            })
+            .catch((e) => {
+                console.log(e);
+            })
+    })
+
 });

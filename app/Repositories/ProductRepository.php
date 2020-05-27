@@ -5,13 +5,14 @@ namespace App\Repositories;
 
 use App\Models\Product;
 use App\Traits\CommonFields;
+use App\Traits\CommonQueries;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use Whoops\Exception\ErrorException;
 
 class ProductRepository extends BaseRepository implements ProductRepositoryInterface
 {
-    use CommonFields;
+    use CommonFields, CommonQueries;
 
     /**
      * ProductRepository constructor.

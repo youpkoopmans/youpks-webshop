@@ -2,33 +2,40 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Repositories\ProductRepositoryInterface;
+use App\Repositories\BrandRepositoryInterface;
 use App\Validation\ProductRules;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
-class ProductController
+class ProductController extends Controller
 {
-    use ValidatesRequests;
-
     /**
      * @var ProductRepositoryInterface
      */
     private $productRepository;
 
     /**
+     * @var BrandRepositoryInterface
+     */
+    private $brandRepository;
+
+    /**
      * ProductController constructor.
      * @param ProductRepositoryInterface $productRepository
+     * @param BrandRepositoryInterface $brandRepository
      */
-    public function __construct(ProductRepositoryInterface $productRepository)
+    public function __construct(ProductRepositoryInterface $productRepository, BrandRepositoryInterface $brandRepository)
     {
         $this->productRepository = $productRepository;
+        $this->brandRepository = $brandRepository;
+        $this->middleware('auth');
     }
 
     /**
@@ -39,8 +46,10 @@ class ProductController
     public function index()
     {
         $products = $this->productRepository->all();
-
-        return view('backend.pages.product.index')->with(compact('products'));
+        $data = [
+            'products' => $products
+        ];
+        return view('backend.pages.product.index', $data);
     }
 
     /**
@@ -49,7 +58,13 @@ class ProductController
      */
     public function create()
     {
-        return view('backend.pages.product.form.create');
+        $brands = $this->brandRepository->whereNotNull('published_at')
+            ->orderBy('title', 'ASC')
+            ->pluck('title', 'id');
+        $data = [
+          'brands' => $brands
+        ];
+        return view('backend.pages.product.form.create', $data);
     }
 
     /**
@@ -76,8 +91,14 @@ class ProductController
     public function edit(Product $product)
     {
         $product = $this->productRepository->findOrFail($product->id);
-
-        return view('backend.pages.product.form.edit')->with(compact('product'));
+        $brands = $this->brandRepository->whereNotNull('published_at')
+            ->orderBy('title', 'ASC')
+            ->pluck('title', 'id');
+        $data = [
+            'product' => $product,
+            'brands' => $brands
+        ];
+        return view('backend.pages.product.form.edit', $data);
     }
 
     /**

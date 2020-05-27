@@ -6,7 +6,7 @@ namespace App\Repositories;
 
 use Illuminate\Support\Collection;
 
-interface ProductRepositoryInterface extends BaseRepositoryInterface
+interface BrandRepositoryInterface extends BaseRepositoryInterface
 {
 
     /**
@@ -28,5 +28,6 @@ interface ProductRepositoryInterface extends BaseRepositoryInterface
      * @param array|Collection|int $ids
      */
     public function destroy($ids);
+
 
 }
