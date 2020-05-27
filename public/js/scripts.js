@@ -53468,9 +53468,8 @@ __webpack_require__(/*! ./libraries/libraries */ "./resources/js/libraries/libra
 
 $(document).ready(function () {
   $('#image-input').on('change', function () {
-    $('#image-edit-preview').hide(); // TODO make jQuery
-
-    document.getElementById('image-preview').src = window.URL.createObjectURL(this.files[0]);
+    $('#image-edit-preview').hide();
+    $('#image-preview').attr('src', window.URL.createObjectURL(this.files[0]));
   });
 });
 
