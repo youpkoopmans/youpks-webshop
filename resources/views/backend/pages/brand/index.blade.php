@@ -20,7 +20,7 @@
                 <th>Active</th>
                 <th colspan="2" class="w-25">Options</th>
             </tr>
-            @foreach($brands as $brand)
+            @forelse($brands as $brand)
                 <tr>
                     <td>{{ $brand->id }}</td>
                     <td>{{ $brand->title }}</td>
@@ -28,7 +28,13 @@
                     <td><a class="btn btn-dark" href="{{ route('backend.brand.edit', $brand->id) }}">Edit</a></td>
                     <td><button data-id="{{$brand->id}}" class="btn btn-danger delete-brand">Delete</button></td>
                 </tr>
-            @endforeach
+            @empty
+                <tr>
+                    <td colspan="5">
+                        Er zijn geen resultaten.
+                    </td>
+                </tr>
+            @endforelse
         </table>
     </div>
 </div>
