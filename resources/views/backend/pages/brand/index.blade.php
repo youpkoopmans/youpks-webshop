@@ -26,7 +26,7 @@
                     <td>{{ $brand->title }}</td>
                     <td>{!! $brand->active !!}</td>
                     <td><a class="btn btn-dark" href="{{ route('backend.brand.edit', $brand->id) }}">Edit</a></td>
-                    <td><button data-id="{{$brand->id}}" class="btn btn-danger delete-brand">Delete</button></td>
+                    <td><a class="btn btn-danger" href="{{ route('backend.brand.destroy', $brand->id) }}">Delete</a></td>
                 </tr>
             @empty
                 <tr>

@@ -49,15 +49,13 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
     }
 
     /**
-     * @param array|Collection|int $ids
+     * @param array|Collection|int $id
      */
-    public function destroy($ids)
+    public function destroy($id)
     {
-        $products = parent::findMany($ids);
-        $products->each(function ($product) {
-            Storage::delete($product->image);
-        });
-        parent::destroy($ids);
+        $product = parent::findOrFail($id);
+        Storage::delete($product->image);
+        parent::destroy($id);
     }
 
     /**

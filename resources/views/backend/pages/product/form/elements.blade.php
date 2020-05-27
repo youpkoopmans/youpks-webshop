@@ -71,9 +71,10 @@
             {!! Form::label('image', 'Image', ['class' => 'col-md-4 col-form-label text-md-right']) !!}
             <div class="col-md-8">
                 @if(isset($product->image))
-                    <img src="{{asset($product->image)}}" alt="{{$product->title}}" class="img-fluid mb-3"><br>
+                    <img src="{{asset($product->image)}}" alt="{{$product->title}}" id="image-edit-preview" class="img-fluid mb-3">
                 @endif
-                {!! Form::file('image') !!}
+                    <img id="image-preview" src="" class="img-fluid mb-3">
+                {!! Form::file('image', ['id' => 'image-input', 'class' => 'd-block']) !!}
                 @error('image')
                 <span class="validation-error">{{ $message }}</span>
                 @enderror

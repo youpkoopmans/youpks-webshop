@@ -24,5 +24,5 @@ Route::post('update/{product}', [Product::class, 'update'])
     ->name('.update');
 
 // Product Destroy
-Route::post('destroy', [Product::class, 'destroy'])
+Route::get('destroy/{product}', [Product::class, 'destroy'])
     ->name('.destroy');

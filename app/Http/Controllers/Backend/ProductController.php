@@ -120,14 +120,12 @@ class ProductController extends Controller
     /**
      * Remove the specified product from storage.
      *
-     * @param Request $request
+     * @param Product $product
      * @return RedirectResponse
-     * @throws ValidationException
      */
-    public function destroy(Request $request)
+    public function destroy(Product $product)
     {
-        $validator = $this->validate($request, ProductRules::destroy());
-        $this->productRepository->destroy($validator);
+        $this->productRepository->destroy($product->id);
 
         return redirect()->route('backend.product.index');
     }

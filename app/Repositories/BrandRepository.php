@@ -47,15 +47,11 @@ class BrandRepository extends BaseRepository implements BrandRepositoryInterface
     }
 
     /**
-     * @param array|Collection|int $ids
+     * @param $id
      */
-    public function destroy($ids)
+    public function destroy($id)
     {
-        $brands = parent::findMany($ids);
-        $brands->each(function ($brand) {
-            Storage::delete($brand->image);
-        });
-        parent::destroy($ids);
+        parent::destroy($id);
     }
 
 }

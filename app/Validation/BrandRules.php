@@ -29,10 +29,4 @@ class BrandRules
         ];
     }
 
-    static public function destroy(): array
-    {
-        return [
-            'id' => 'required'
-        ];
-    }
 }

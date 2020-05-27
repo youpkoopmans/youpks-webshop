@@ -98,14 +98,12 @@ class BrandController extends Controller
     /**
      * Remove the specified brand from storage.
      *
-     * @param Request $request
+     * @param Brand $brand
      * @return RedirectResponse
-     * @throws ValidationException
      */
-    public function destroy(Request $request)
+    public function destroy(Brand $brand)
     {
-        $validator = $this->validate($request, BrandRules::destroy());
-        $this->brandRepository->destroy($validator);
+        $this->brandRepository->destroy($brand->id);
 
         return redirect()->route('backend.brand.index');
     }

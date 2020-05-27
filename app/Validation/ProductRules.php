@@ -39,10 +39,4 @@ class ProductRules
         ];
     }
 
-    static public function destroy(): array
-    {
-        return [
-            'id' => 'required'
-        ];
-    }
 }

@@ -53467,25 +53467,10 @@ __webpack_require__(/*! ./libraries/libraries */ "./resources/js/libraries/libra
 
 
 $(document).ready(function () {
-  $('.delete-product').click(function (e) {
-    var id = $(this).data('id');
-    axios.post('product/destroy', {
-      id: id
-    }).then(function () {
-      location.reload();
-    })["catch"](function (e) {
-      console.log(e);
-    });
-  });
-  $('.delete-brand').click(function (e) {
-    var id = $(this).data('id');
-    axios.post('brand/destroy', {
-      id: id
-    }).then(function () {
-      location.reload();
-    })["catch"](function (e) {
-      console.log(e);
-    });
+  $('#image-input').on('change', function () {
+    $('#image-edit-preview').hide(); // TODO make jQuery
+
+    document.getElementById('image-preview').src = window.URL.createObjectURL(this.files[0]);
   });
 });
 
