@@ -1,4 +1,4 @@
-@extends('backend.layouts.master')
+@extends('b::layouts.master')
 @section('meta_title', 'Dashboard | Brand edit')
 @section('content')
 <div class="card mt-5">
@@ -15,7 +15,7 @@
 
         {!! Form::open(['route' => ['backend.brand.update', $brand->id], 'errors' => $errors]) !!}
 
-        @include('backend.pages.brand.form.elements')
+        @include('b:brand::form.elements')
 
         {!! Form::close() !!}
 

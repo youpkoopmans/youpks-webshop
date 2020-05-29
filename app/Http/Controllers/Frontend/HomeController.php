@@ -14,6 +14,6 @@ class HomeController
      */
     public function index()
     {
-        return view('frontend.pages.home.index');
+        return view('f:home::index');
     }
 }

@@ -1,4 +1,4 @@
-@extends('backend.layouts.master')
+@extends('b::layouts.master')
 
 @section('content')
 <div class="container">

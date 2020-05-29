@@ -1,4 +1,4 @@
-@extends('backend.layouts.master')
+@extends('b::layouts.master')
 @section('meta_title', 'Dashboard | Category edit')
 @section('content')
 <div class="card mt-5">
@@ -15,7 +15,7 @@
 
         {!! Form::open(['route' => ['backend.category.update', $category->id], 'errors' => $errors]) !!}
 
-        @include('backend.pages.category.form.elements')
+        @include('b:category::form.elements')
 
         {!! Form::close() !!}
 

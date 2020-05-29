@@ -39,7 +39,7 @@ class CategoryController extends Controller
     {
         $categories = $this->categoryRepository->roots()->get();
 
-        return view('backend.pages.category.index', compact('categories'));
+        return view('b:category::index', compact('categories'));
     }
 
     /**
@@ -49,7 +49,7 @@ class CategoryController extends Controller
     public function create()
     {
         $categories = $this->categoryRepository->roots()->pluck('title', 'id');
-        return view('backend.pages.category.form.create', compact('categories'));
+        return view('b:category::form.create', compact('categories'));
     }
 
     /**
@@ -83,7 +83,7 @@ class CategoryController extends Controller
             'category' => $category,
         ];
 
-        return view('backend.pages.category.form.edit', $data);
+        return view('b:category::form.edit', $data);
     }
 
     /**

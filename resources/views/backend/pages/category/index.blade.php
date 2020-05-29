@@ -1,4 +1,4 @@
-@extends('backend.layouts.master')
+@extends('b::layouts.master')
 @section('meta_title', 'Dashboard | Category')
 @section('content')
 <div class="card mt-5">

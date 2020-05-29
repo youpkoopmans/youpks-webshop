@@ -10,14 +10,14 @@
 <body id="backend">
 
 <header>
-    @include('backend.includes.header')
+    @include('b::includes.header')
 </header>
 @if(Auth::check())
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-3 col-lg-2">
             <section class="sidebar">
-                @include('backend.includes.sidebar')
+                @include('b::includes.sidebar')
             </section>
         </div>
 
@@ -41,7 +41,7 @@
 @endif
 
 <footer>
-    @include('backend.includes.footer')
+    @include('b::includes.footer')
 </footer>
 
 @include('includes.scripts')

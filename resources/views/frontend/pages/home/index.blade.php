@@ -1,4 +1,4 @@
-@extends('frontend.layouts.master')
+@extends('f::layouts.master')
 @section('meta_title', 'Home')
 @section('content')
     <div class="container">

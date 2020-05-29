@@ -61,7 +61,7 @@ class ProductController extends Controller
         $data = [
             'products' => $products
         ];
-        return view('backend.pages.product.index', $data);
+        return view('b:product::index', $data);
     }
 
     /**
@@ -81,7 +81,7 @@ class ProductController extends Controller
           'brands' => $brands,
           'categories' => $categories
         ];
-        return view('backend.pages.product.form.create', $data);
+        return view('b:product::form.create', $data);
     }
 
     /**
@@ -120,7 +120,7 @@ class ProductController extends Controller
             'brands' => $brands,
             'categories' => $categories,
         ];
-        return view('backend.pages.product.form.edit', $data);
+        return view('b:product::form.edit', $data);
     }
 
     /**

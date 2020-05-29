@@ -39,7 +39,7 @@ class BrandController extends Controller
     {
         $brands = $this->brandRepository->all();
 
-        return view('backend.pages.brand.index', compact('brands'));
+        return view('b:brand::index', compact('brands'));
     }
 
     /**
@@ -48,7 +48,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        return view('backend.pages.brand.form.create');
+        return view('b:brand::form.create');
     }
 
     /**
@@ -76,7 +76,7 @@ class BrandController extends Controller
     {
         $brand = $this->brandRepository->findOrFail($brand->id);
 
-        return view('backend.pages.brand.form.edit', compact('brand'));
+        return view('b:brand::form.edit', compact('brand'));
     }
 
     /**

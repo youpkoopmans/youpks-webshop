@@ -10,7 +10,7 @@
 <body id="frontend">
 
 <header>
-    @include('frontend.includes.header')
+    @include('f::includes.header')
 </header>
 
 <section class="page">
@@ -18,7 +18,7 @@
 </section>
 
 <footer>
-    @include('frontend.includes.footer')
+    @include('f::includes.footer')
 </footer>
 
 @include('includes.scripts')

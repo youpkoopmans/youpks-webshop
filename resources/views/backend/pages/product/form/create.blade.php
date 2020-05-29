@@ -1,4 +1,4 @@
-@extends('backend.layouts.master')
+@extends('b::layouts.master')
 @section('meta_title', 'Dashboard | Product create')
 @section('content')
 <div class="card mt-5">
@@ -15,7 +15,7 @@
 
         {!! Form::open(['route' => 'backend.product.store', 'files' => true, 'errors' => $errors]) !!}
 
-        @include('backend.pages.product.form.elements')
+        @include('b:product::form.elements')
 
         {!! Form::close() !!}
 
