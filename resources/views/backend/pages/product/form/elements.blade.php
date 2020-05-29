@@ -29,11 +29,22 @@
                 @enderror
             </div>
         </div>
+
         <div class="form-group row">
             {!! Form::label('brand', 'Brand', ['class' => 'col-md-4 col-form-label text-md-right']) !!}
             <div class="col-md-8">
                 {!! Form::select('brand_id', $brands, isset($product->brand) ? [$product->brand->title => $product->brand->id] : old('brand_id'), ['class' => 'form-control']) !!}
                 @error('brand_id')
+                <span class="validation-error">{{ $message }}</span>
+                @enderror
+            </div>
+        </div>
+
+        <div class="form-group row">
+            {!! Form::label('category', 'Category', ['class' => 'col-md-4 col-form-label text-md-right']) !!}
+            <div class="col-md-8">
+                {!! Form::select('category_id', $categories, isset($product->category) ? [$product->category->title => $product->category->id] : old('category_id'), ['class' => 'form-control']) !!}
+                @error('category_id')
                 <span class="validation-error">{{ $message }}</span>
                 @enderror
             </div>

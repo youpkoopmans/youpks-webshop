@@ -4,6 +4,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Repositories\CategoryRepository;
+use App\Repositories\CategoryRepositoryInterface;
 use App\Repositories\BrandRepository;
 use App\Repositories\BrandRepositoryInterface;
 use App\Repositories\ProductRepository;
@@ -16,6 +18,7 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         $this->registerProductRepository();
         $this->registerBrandRepository();
+        $this->registerCategoryRepository();
     }
 
     private function registerProductRepository()
@@ -26,6 +29,11 @@ class RepositoryServiceProvider extends ServiceProvider
     private function registerBrandRepository()
     {
         $this->app->bind(BrandRepositoryInterface::class, BrandRepository::class);
+    }
+
+    private function registerCategoryRepository()
+    {
+        $this->app->bind(CategoryRepositoryInterface::class, CategoryRepository::class);
     }
 
 

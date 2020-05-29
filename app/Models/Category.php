@@ -3,10 +3,10 @@
 namespace App\Models;
 
 use App\Traits\ModelHelpers;
-use Illuminate\Database\Eloquent\Model;
+use Baum\Node;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Brand extends Model
+class Category extends Node
 {
     use ModelHelpers;
 
@@ -33,5 +33,4 @@ class Brand extends Model
     {
         return $this->hasMany(Product::class);
     }
-
 }

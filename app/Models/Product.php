@@ -2,17 +2,21 @@
 
 namespace App\Models;
 
+use App\Traits\ModelHelpers;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Product extends Model
 {
+    use ModelHelpers;
+
     /**
      * @var string[]
      */
     protected $fillable = [
         'title',
         'brand_id',
+        'category_id',
         'slug',
         'intro',
         'body',
@@ -37,14 +41,11 @@ class Product extends Model
     }
 
     /**
-     * @return string
+     * @return BelongsTo
      */
-    public function getActiveAttribute()
+    public function category()
     {
-        if($this->published_at != null) {
-            return '<i class="fa fa-check"></i>';
-        }
-        return '<i class="fa fa-ban"></i>';
+        return $this->belongsTo(Category::class);
     }
 
 }

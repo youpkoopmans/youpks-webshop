@@ -38,6 +38,15 @@ Route::prefix('dashboard')
                         include 'brand.php';
 
                     });
+
+                // Category
+                Route::name('.category')
+                    ->prefix('category')
+                    ->group(function () {
+
+                        include 'category.php';
+
+                    });
             });
     });
 

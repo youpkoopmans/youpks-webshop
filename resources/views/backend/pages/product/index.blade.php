@@ -27,7 +27,6 @@
                     <td>{!! $product->active !!}</td>
                     <td><a class="btn btn-dark" href="{{ route('backend.product.edit', $product->id) }}">Edit</a></td>
                     <td><a class="btn btn-danger" href="{{ route('backend.product.destroy', $product->id) }}">Delete</a></td>
-
                 </tr>
             @empty
                 <tr>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Repositories\ProductRepositoryInterface;
 use App\Repositories\BrandRepositoryInterface;
+use App\Repositories\CategoryRepositoryInterface;
 use App\Validation\ProductRules;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -27,14 +28,25 @@ class ProductController extends Controller
     private $brandRepository;
 
     /**
+     * @var CategoryRepositoryInterface
+     */
+    private $categoryRepository;
+
+    /**
      * ProductController constructor.
      * @param ProductRepositoryInterface $productRepository
      * @param BrandRepositoryInterface $brandRepository
+     * @param CategoryRepositoryInterface $categoryRepository
      */
-    public function __construct(ProductRepositoryInterface $productRepository, BrandRepositoryInterface $brandRepository)
+    public function __construct(
+        ProductRepositoryInterface $productRepository,
+        BrandRepositoryInterface $brandRepository,
+        CategoryRepositoryInterface $categoryRepository
+    )
     {
         $this->productRepository = $productRepository;
         $this->brandRepository = $brandRepository;
+        $this->categoryRepository = $categoryRepository;
         $this->middleware('auth');
     }
 
@@ -61,8 +73,13 @@ class ProductController extends Controller
         $brands = $this->brandRepository->whereNotNull('published_at')
             ->orderBy('title', 'ASC')
             ->pluck('title', 'id');
+        $categories = $this->categoryRepository->allLeaves()
+            ->whereNotNull('published_at')
+            ->orderBy('title', 'ASC')
+            ->pluck('title', 'id');
         $data = [
-          'brands' => $brands
+          'brands' => $brands,
+          'categories' => $categories
         ];
         return view('backend.pages.product.form.create', $data);
     }
@@ -94,9 +111,14 @@ class ProductController extends Controller
         $brands = $this->brandRepository->whereNotNull('published_at')
             ->orderBy('title', 'ASC')
             ->pluck('title', 'id');
+        $categories = $this->categoryRepository->allLeaves()
+            ->whereNotNull('published_at')
+            ->orderBy('title', 'ASC')
+            ->pluck('title', 'id');
         $data = [
             'product' => $product,
-            'brands' => $brands
+            'brands' => $brands,
+            'categories' => $categories,
         ];
         return view('backend.pages.product.form.edit', $data);
     }
