@@ -82,13 +82,28 @@
             {!! Form::label('image', 'Image', ['class' => 'col-md-4 col-form-label text-md-right']) !!}
             <div class="col-md-8">
                 @if(isset($product->image))
-                    <img src="{{asset($product->image)}}" alt="{{$product->title}}" id="image-edit-preview" class="img-fluid mb-3 rounded border bg-light">
+                    <img src="{{asset($product->image)}}" alt="{{$product->image}}" id="image-edit-preview" class="img-fluid mb-3 rounded border bg-light">
                 @endif
                     <img id="image-preview" src="" class="img-fluid mb-3 rounded border bg-light">
                 {!! Form::file('image', ['id' => 'image-input', 'class' => 'd-block']) !!}
                 @error('image')
                 <span class="validation-error">{{ $message }}</span>
                 @enderror
+            </div>
+        </div>
+        <div class="form-group row">
+            {!! Form::label('images', 'Images', ['class' => 'col-md-4 col-form-label text-md-right']) !!}
+            <div class="col-md-8">
+                @if(isset($product->files))
+                    @foreach($product->files as $image)
+                        <img src="{{asset($image->path)}}" alt="{{$image->path}}" class="img-fluid mb-3 rounded border bg-light">
+                    @endforeach
+                @endif
+{{--                <img id="image-preview" src="" class="img-fluid mb-3 rounded border bg-light">--}}
+                {!! Form::file('images[]', ['multiple']) !!}
+{{--                @error('image')--}}
+{{--                <span class="validation-error">{{ $message }}</span>--}}
+{{--                @enderror--}}
             </div>
         </div>
     </div>

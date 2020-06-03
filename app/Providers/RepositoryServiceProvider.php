@@ -16,25 +16,9 @@ class RepositoryServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->registerProductRepository();
-        $this->registerBrandRepository();
-        $this->registerCategoryRepository();
+        $this->app->singleton(ProductRepositoryInterface::class, ProductRepository::class);
+        $this->app->singleton(BrandRepositoryInterface::class, BrandRepository::class);
+        $this->app->singleton(CategoryRepositoryInterface::class, CategoryRepository::class);
     }
-
-    private function registerProductRepository()
-    {
-        $this->app->bind(ProductRepositoryInterface::class, ProductRepository::class);
-    }
-
-    private function registerBrandRepository()
-    {
-        $this->app->bind(BrandRepositoryInterface::class, BrandRepository::class);
-    }
-
-    private function registerCategoryRepository()
-    {
-        $this->app->bind(CategoryRepositoryInterface::class, CategoryRepository::class);
-    }
-
 
 }

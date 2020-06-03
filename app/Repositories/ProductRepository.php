@@ -3,11 +3,13 @@
 
 namespace App\Repositories;
 
+use App\Models\File;
 use App\Models\Product;
 use App\Traits\CommonFields;
 use App\Traits\CommonQueries;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Whoops\Exception\ErrorException;
 
 class ProductRepository extends BaseRepository implements ProductRepositoryInterface
@@ -29,10 +31,12 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
      */
     public function store($attributes, $request)
     {
+//        dd($request->all());
         $attributes = $this->storeImage($attributes);
         $attributes = $this->setSlug($attributes);
         $attributes = $this->setPublishedAt($attributes, $request);
-        parent::create($attributes);
+        $product = parent::create($attributes);
+        $this->storeImages($request, $product);
     }
 
     /**
@@ -65,10 +69,31 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
     private function storeImage($attributes): array
     {
         if(isset($attributes['image'])){
-            $image = $attributes['image']->store('images');
+            $image = $attributes['image']->storeAs('images/product/main-images',
+                Str::slug($attributes['title']) . '.' . $attributes['image']->extension());
             $attributes = array_merge($attributes, ['image' => $image]);
         }
         return $attributes;
+    }
+
+    /**
+     * @param $attributes
+     * @return array
+     */
+    private function storeImages($request, $model)
+    {
+        if(isset($request['images'])) {
+            $i = 1;
+            $images = [];
+            foreach ($request['images'] as $image) {
+                $image = $image->storeAs('images/product/sub-images',
+                    Str::slug($request['title']) . '_sub-' . $i . '.' . $image->extension());
+                $image = File::create(['path' => $image]);
+                $i++;
+                $images [] = $image->id;
+            }
+                $model->files()->sync($images);
+        }
     }
 
     /**
@@ -81,10 +106,12 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         if(isset($attributes['image'])){
             $product = parent::findOrFail($id);
             Storage::delete($product->image);
-            $image = $attributes['image']->store('images');
+            $image = $attributes['image']->storeAs('images/product/main-images',
+                Str::slug($attributes['title']) . '.' . $attributes['image']->extension());
             $attributes = array_merge($attributes, ['image' => $image]);
         }
         return $attributes;
     }
+
 
 }

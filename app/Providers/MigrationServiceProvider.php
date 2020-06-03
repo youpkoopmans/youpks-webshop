@@ -12,6 +12,7 @@ class MigrationServiceProvider extends ServiceProvider
         $this->bootMigrations('product');
         $this->bootMigrations('brand');
         $this->bootMigrations('category');
+        $this->bootMigrations('file');
     }
 
     private function bootMigrations($model)
