@@ -3,7 +3,7 @@
 @section('content')
 <div class="card mt-5">
     <div class="card-header">
-        <h1>Product edit</h1>
+        <h1>{{ __('backend/product.title.edit') }}</h1>
     </div>
 
     <div class="card-body">

@@ -6,11 +6,14 @@ namespace App\Repositories;
 use App\Models\Brand;
 use App\Traits\CommonFields;
 use App\Traits\CommonQueries;
+use App\Traits\StatusAlert;
 use Whoops\Exception\ErrorException;
 
 class BrandRepository extends BaseRepository implements BrandRepositoryInterface
 {
-    use CommonFields, CommonQueries;
+    use CommonFields,
+        CommonQueries,
+        StatusAlert;
 
     /**
      * BrandRepository constructor.
@@ -30,6 +33,7 @@ class BrandRepository extends BaseRepository implements BrandRepositoryInterface
         $attributes = $this->setSlug($attributes);
         $attributes = $this->setPublishedAt($attributes, $request);
         parent::create($attributes);
+        $this->storeAlert($request->get('title'));
     }
 
     /**
@@ -42,6 +46,7 @@ class BrandRepository extends BaseRepository implements BrandRepositoryInterface
     {
         $attributes = $this->setPublishedAt($attributes, $request);
         parent::update($model, $attributes);
+        $this->updateAlert($request->get('title'));
     }
 
     /**
@@ -49,6 +54,8 @@ class BrandRepository extends BaseRepository implements BrandRepositoryInterface
      */
     public function destroy($id)
     {
+        $brand = parent::findOrFail($id);
+        $this->destroyAlert($brand->title);
         parent::destroy($id);
     }
 

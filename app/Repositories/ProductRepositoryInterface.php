@@ -12,6 +12,7 @@ interface ProductRepositoryInterface extends BaseRepositoryInterface
     /**
      * @param $attributes
      * @param $request
+     * @param $alertText
      * @return mixed
      */
     public function store($attributes, $request);

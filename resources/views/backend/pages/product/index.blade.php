@@ -3,8 +3,8 @@
 @section('content')
 <div class="card mt-5">
     <div class="card-header d-flex justify-content-between align-items-center">
-        <h1>Products</h1>
-        <a class="btn btn-success" href="{{ route('backend.product.create') }}">Add product</a>
+        <h1>{{ __('backend/product.title.index') }}</h1>
+        <a class="btn btn-success" href="{{ route('backend.product.create') }}">{{ __('backend/product.button.add') }}</a>
     </div>
 
     <div class="card-body">
@@ -15,23 +15,31 @@
         @endif
         <table class="table">
             <tr>
-                <th class="w-25">ID</th>
-                <th>Title</th>
-                <th>Active</th>
-                <th colspan="2" class="w-25">Options</th>
+                <th class="w-25">{{ __('backend/product.table.id') }}</th>
+                <th>{{ __('backend/product.table.title') }}</th>
+                <th>{{ __('backend/product.table.active') }}</th>
+                <th colspan="2" class="w-25">{{ __('backend/product.table.options') }}</th>
             </tr>
             @forelse($products as $product)
                 <tr>
                     <td>{{ $product->id }}</td>
                     <td>{{ $product->title }}</td>
                     <td>{!! $product->active !!}</td>
-                    <td><a class="btn btn-dark" href="{{ route('backend.product.edit', $product->id) }}">Edit</a></td>
-                    <td><a class="btn btn-danger" href="{{ route('backend.product.destroy', $product->id) }}">Delete</a></td>
+                    <td>
+                        <a class="btn btn-dark" href="{{ route('backend.product.edit', $product->id) }}">
+                            {{ __('backend/product.button.edit') }}
+                        </a>
+                    </td>
+                    <td>
+                        <a class="btn btn-danger" href="{{ route('backend.product.destroy', $product->id) }}">
+                            {{ __('backend/product.button.delete') }}
+                        </a>
+                    </td>
                 </tr>
             @empty
                 <tr>
                     <td colspan="5">
-                        Er zijn geen resultaten.
+                        {{ __('backend/product.table.no-results') }}
                     </td>
                 </tr>
             @endforelse

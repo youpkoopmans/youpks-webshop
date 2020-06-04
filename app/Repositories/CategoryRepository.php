@@ -6,11 +6,14 @@ namespace App\Repositories;
 use App\Models\Category;
 use App\Traits\CommonFields;
 use App\Traits\CommonQueries;
+use App\Traits\StatusAlert;
 use Whoops\Exception\ErrorException;
 
 class CategoryRepository extends BaseRepository implements CategoryRepositoryInterface
 {
-    use CommonFields, CommonQueries;
+    use CommonFields,
+        CommonQueries,
+        StatusAlert;
 
     /**
      * CategoryRepository constructor.
@@ -54,6 +57,7 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
         } else {
             parent::create($attributes);
         }
+        $this->storeAlert($request->get('title'));
     }
 
     /**
@@ -66,6 +70,7 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
     {
         $attributes = $this->setPublishedAt($attributes, $request);
         parent::update($model, $attributes);
+        $this->updateAlert($request->get('title'));
     }
 
     /**
@@ -73,6 +78,8 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
      */
     public function destroy($id)
     {
+        $category = parent::findOrFail($id);
+        $this->destroyAlert($category->title);
         parent::destroy($id);
     }
 
