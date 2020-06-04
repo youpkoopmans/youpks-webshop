@@ -52,9 +52,9 @@ class Product extends Model
     /**
      * @return BelongsToMany
      */
-    public function files()
+    public function images()
     {
-        return $this->belongsToMany(File::class);
+        return $this->belongsToMany(File::class)->whereType('img');
     }
 
 }

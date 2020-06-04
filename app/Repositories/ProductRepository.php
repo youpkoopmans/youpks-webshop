@@ -31,7 +31,6 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
      */
     public function store($attributes, $request)
     {
-//        dd($request->all());
         $attributes = $this->storeImage($attributes);
         $attributes = $this->setSlug($attributes);
         $attributes = $this->setPublishedAt($attributes, $request);
@@ -50,6 +49,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         $attributes = $this->updateImage($attributes, $model->id);
         $attributes = $this->setPublishedAt($attributes, $request);
         parent::update($model, $attributes);
+        $this->updateImages($request, $model->id);
     }
 
     /**
@@ -59,6 +59,12 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
     {
         $product = parent::findOrFail($id);
         Storage::delete($product->image);
+        foreach($product->images as $image){
+            Storage::delete($image->path);
+            File::destroy(['id' => $image->id]);
+        }
+        $images = File::all();
+        $product->images()->sync($images);
         parent::destroy($id);
     }
 
@@ -77,22 +83,14 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
     }
 
     /**
-     * @param $attributes
-     * @return array
+     * @param $request
+     * @param $product
+     * @return void
      */
-    private function storeImages($request, $model)
+    private function storeImages($request, $product)
     {
         if(isset($request['images'])) {
-            $i = 1;
-            $images = [];
-            foreach ($request['images'] as $image) {
-                $image = $image->storeAs('images/product/sub-images',
-                    Str::slug($request['title']) . '_sub-' . $i . '.' . $image->extension());
-                $image = File::create(['path' => $image]);
-                $i++;
-                $images [] = $image->id;
-            }
-                $model->files()->sync($images);
+            $this->syncImages($request, $product);
         }
     }
 
@@ -112,6 +110,43 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         }
         return $attributes;
     }
+
+    /**
+     * @param $request
+     * @param $id
+     * @return void
+     */
+    private function updateImages($request, $id)
+    {
+        if(isset($request['images'])) {
+            $product = parent::findOrFail($id);
+            foreach($product->images as $image){
+                Storage::delete($image->path);
+                File::destroy(['id' => $image->id]);
+            }
+            $this->syncImages($request, $product);
+        }
+    }
+
+    /**
+     * @param $request
+     * @param $product
+     */
+    private function syncImages($request, $product)
+    {
+        $i = 1;
+        $images = [];
+        foreach ($request['images'] as $image) {
+            $image = $image->storeAs('images/product/sub-images',
+                Str::slug($request['title']) . '_sub-' . $i . '.' . $image->extension());
+            $image = File::create(['path' => $image, 'type' => 'img']);
+            $i++;
+            $images [] = $image->id;
+        }
+        $product->images()->sync($images);
+    }
+
+
 
 
 }

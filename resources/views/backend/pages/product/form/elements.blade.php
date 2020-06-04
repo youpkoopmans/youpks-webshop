@@ -94,16 +94,13 @@
         <div class="form-group row">
             {!! Form::label('images', 'Images', ['class' => 'col-md-4 col-form-label text-md-right']) !!}
             <div class="col-md-8">
-                @if(isset($product->files))
-                    @foreach($product->files as $image)
-                        <img src="{{asset($image->path)}}" alt="{{$image->path}}" class="img-fluid mb-3 rounded border bg-light">
+                @if(isset($product->images))
+                    @foreach($product->images as $image)
+                        <img src="{{asset($image->path)}}" alt="{{$image->path}}" class="image-edit-preview img-fluid mb-3 rounded border bg-light">
                     @endforeach
                 @endif
 {{--                <img id="image-preview" src="" class="img-fluid mb-3 rounded border bg-light">--}}
                 {!! Form::file('images[]', ['multiple']) !!}
-{{--                @error('image')--}}
-{{--                <span class="validation-error">{{ $message }}</span>--}}
-{{--                @enderror--}}
             </div>
         </div>
     </div>
