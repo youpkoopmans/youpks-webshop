@@ -174,9 +174,15 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        \App\Providers\RepositoryServiceProvider::class,
-        \App\Providers\ViewNamespaceServiceProvider::class,
-        \App\Providers\MigrationServiceProvider::class,
+
+        /*
+         * Custom Service Providers...
+         */
+        App\Providers\RepositoryServiceProvider::class,
+        App\Providers\ViewNamespaceServiceProvider::class,
+        App\Providers\MigrationServiceProvider::class,
+        App\Providers\TranslationServiceProvider::class,
+        App\Providers\HelperServiceProvider::class,
 
     ],
 

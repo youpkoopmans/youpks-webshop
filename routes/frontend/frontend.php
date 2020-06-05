@@ -8,11 +8,6 @@ Route::name('frontend')
 
         // Home
         Route::name('.home')
-            ->group(function () {
-
-                include 'home.php';
-
-            });
-
+            ->group(route_frontend('home.php'));
 
     });

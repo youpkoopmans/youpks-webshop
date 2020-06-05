@@ -3,7 +3,7 @@
 @section('content')
 <div class="card mt-5">
     <div class="card-header">
-        <h1>Dashboard</h1>
+        <h1>{{ __('b::home.title.index') }}</h1>
     </div>
 
     <div class="card-body">

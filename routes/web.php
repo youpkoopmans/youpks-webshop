@@ -11,8 +11,13 @@
 |
 */
 
-// Backend Routes
-include 'backend/backend.php';
+Route::group(['prefix' => LaravelLocalization::setLocale()], function()
+{
 
-// Frontend Routes
-include 'frontend/frontend.php';
+    // Backend Routes
+    include 'backend/backend.php';
+
+    // Frontend Routes
+    include 'frontend/frontend.php';
+
+});

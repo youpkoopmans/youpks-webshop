@@ -15,38 +15,22 @@ Route::prefix('dashboard')
 
                 // Home
                 Route::name('.home')
-                    ->group(function () {
-
-                        include 'home.php';
-
-                    });
+                    ->group(route_backend('home.php'));
 
                 // Product
                 Route::name('.product')
                     ->prefix('product')
-                    ->group(function () {
-
-                        include 'product.php';
-
-                    });
+                    ->group(route_backend('product.php'));
 
                 // Brand
                 Route::name('.brand')
                     ->prefix('brand')
-                    ->group(function () {
-
-                        include 'brand.php';
-
-                    });
+                    ->group(route_backend('brand.php'));
 
                 // Category
                 Route::name('.category')
                     ->prefix('category')
-                    ->group(function () {
-
-                        include 'category.php';
-
-                    });
+                    ->group(route_backend('category.php'));
             });
     });
 

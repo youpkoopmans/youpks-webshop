@@ -32,7 +32,6 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
     /**
      * @param $attributes
      * @param $request
-     * @param $alertText
      */
     public function store($attributes, $request)
     {

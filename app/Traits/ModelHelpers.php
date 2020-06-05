@@ -4,7 +4,6 @@ namespace App\Traits;
 
 trait ModelHelpers
 {
-
     /**
      * @return string
      */

@@ -17,7 +17,7 @@ trait StatusAlert
      */
     public function storeAlert($alertTitle)
     {
-        session()->flash('status', $alertTitle . __('backend/alert.store'));
+        session()->flash('status', $alertTitle . __('b::alert.store'));
     }
 
     /**
@@ -25,7 +25,7 @@ trait StatusAlert
      */
     public function updateAlert($alertTitle)
     {
-        session()->flash('status', $alertTitle . __('backend/alert.update'));
+        session()->flash('status', $alertTitle . __('b::alert.update'));
     }
 
     /**
@@ -33,7 +33,7 @@ trait StatusAlert
      */
     public function destroyAlert($alertTitle)
     {
-        session()->flash('status', $alertTitle . __('backend/alert.destroy'));
+        session()->flash('status', $alertTitle . __('b::alert.destroy'));
     }
 
 }

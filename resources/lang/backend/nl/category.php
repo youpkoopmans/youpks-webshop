@@ -8,7 +8,6 @@ return [
     ],
 
     'table' => [
-        'id' => 'ID',
         'title' => 'Titel',
         'active' => 'Actief',
         'options' => 'Opties',
