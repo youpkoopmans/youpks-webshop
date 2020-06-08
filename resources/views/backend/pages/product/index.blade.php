@@ -44,6 +44,7 @@
                 </tr>
             @endforelse
         </table>
+        <a class="btn btn-success" href="{{ route('backend.product.export-excel') }}">{{ __('b::product.button.export-excel') }}</a>
     </div>
 </div>
 @endsection

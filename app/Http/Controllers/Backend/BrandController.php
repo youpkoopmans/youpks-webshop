@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Exports\BrandExport;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Repositories\BrandRepositoryInterface;
@@ -12,6 +13,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
+use Maatwebsite\Excel\Facades\Excel;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class BrandController extends Controller
 {
@@ -106,6 +109,16 @@ class BrandController extends Controller
         $this->brandRepository->destroy($brand->id);
 
         return redirect()->route('backend.brand.index');
+    }
+
+    /**
+     * Export the brand collection
+     *
+     * @return BinaryFileResponse
+     */
+    public function exportExcel()
+    {
+        return Excel::download(new BrandExport, 'brands.xlsx');
     }
 
 }

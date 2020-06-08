@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Exports\ProductExport;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Repositories\ProductRepositoryInterface;
@@ -14,6 +15,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
+use Maatwebsite\Excel\Facades\Excel;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class ProductController extends Controller
 {
@@ -150,6 +153,16 @@ class ProductController extends Controller
         $this->productRepository->destroy($product->id);
 
         return redirect()->route('backend.product.index');
+    }
+
+    /**
+     * Export the product collection
+     *
+     * @return BinaryFileResponse
+     */
+    public function exportExcel()
+    {
+        return Excel::download(new ProductExport, 'products.xlsx');
     }
 
 }

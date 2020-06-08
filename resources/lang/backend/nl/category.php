@@ -20,6 +20,7 @@ return [
         'delete' => 'Verwijderen',
         'back' => 'Terug',
         'send' => 'Verzenden',
+        'export-excel' => 'Excel exporteren'
     ],
 
     'label' => [

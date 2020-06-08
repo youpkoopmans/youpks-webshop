@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Exports\CategoryExport;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Repositories\CategoryRepositoryInterface;
@@ -12,6 +13,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
+use Maatwebsite\Excel\Facades\Excel;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class CategoryController extends Controller
 {
@@ -113,6 +116,16 @@ class CategoryController extends Controller
         $this->categoryRepository->destroy($category->id);
 
         return redirect()->route('backend.category.index');
+    }
+
+    /**
+     * Export the brand collection
+     *
+     * @return BinaryFileResponse
+     */
+    public function exportExcel()
+    {
+        return Excel::download(new CategoryExport(), 'categories.xlsx');
     }
 
 }

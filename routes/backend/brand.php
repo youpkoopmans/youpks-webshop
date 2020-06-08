@@ -26,3 +26,7 @@ Route::post('update/{brand}', [Brand::class, 'update'])
 // Brand Destroy
 Route::get('destroy/{brand}', [Brand::class, 'destroy'])
     ->name('.destroy');
+
+// Brand Export Excel
+Route::get('export/excel', [Brand::class, 'exportExcel'])
+    ->name('.export-excel');

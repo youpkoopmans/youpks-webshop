@@ -10,7 +10,8 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
-
+{{--                <li><a href="/nl{{$_SERVER['REQUEST_URI']}}">nl</a></li>--}}
+{{--                <li><a href="/en{{$_SERVER['REQUEST_URI']}}">en</a></li>--}}
             </ul>
 
             <!-- Right Side Of Navbar -->

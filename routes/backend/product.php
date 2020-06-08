@@ -26,3 +26,7 @@ Route::post('update/{product}', [Product::class, 'update'])
 // Product Destroy
 Route::get('destroy/{product}', [Product::class, 'destroy'])
     ->name('.destroy');
+
+// Product Export Excel
+Route::get('export/excel', [Product::class, 'exportExcel'])
+    ->name('.export-excel');

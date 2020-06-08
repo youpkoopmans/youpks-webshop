@@ -26,3 +26,7 @@ Route::post('update/{category}', [Category::class, 'update'])
 // Category Destroy
 Route::get('destroy/{category}', [Category::class, 'destroy'])
     ->name('.destroy');
+
+// Category Export Excel
+Route::get('export/excel', [Category::class, 'exportExcel'])
+    ->name('.export-excel');

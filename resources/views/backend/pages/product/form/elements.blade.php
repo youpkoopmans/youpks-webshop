@@ -94,11 +94,15 @@
         <div class="form-group row">
             {!! Form::label('images', __('b::product.label.sub-images'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
             <div class="col-md-8">
-                @if(isset($product->images))
-                    @foreach($product->images as $image)
-                        <img src="{{asset($image->path)}}" alt="{{$image->path}}" class="image-edit-preview img-fluid mb-3 rounded border bg-light">
-                    @endforeach
-                @endif
+                <div class="row">
+                    @if(isset($product->images))
+                        @foreach($product->images as $image)
+                            <div class="col-sm-6">
+                                <img src="{{asset($image->path)}}" alt="{{$image->path}}" class="image-edit-preview img-fluid mb-3 rounded border bg-light">
+                            </div>
+                        @endforeach
+                    @endif
+                </div>
                 {!! Form::file('images[]', ['multiple']) !!}
             </div>
         </div>
