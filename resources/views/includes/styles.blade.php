@@ -1,1 +1,1 @@
-<link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+{!! Html::style(asset('css/styles.css')) !!}

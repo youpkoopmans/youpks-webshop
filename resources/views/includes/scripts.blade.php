@@ -1,1 +1,1 @@
-<script src="{{ asset('js/scripts.js') }}" defer></script>
+{!! Html::script(asset('js/scripts.js')) !!}

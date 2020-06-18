@@ -29,6 +29,6 @@
 
 <div class="float-right">
     {!! Form::submit(__('b::brand.button.send'), ['class' => 'btn btn-primary']) !!}
-    <a class="btn btn-dark" href="{{ route('backend.brand.index') }}"> {{ __('b::brand.button.back') }}</a>
+    {!! Html::linkRoute('backend.brand.index', __('b::brand.button.back'), null, ['class' => 'btn btn-dark']) !!}
 </div>
 

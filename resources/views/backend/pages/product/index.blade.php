@@ -4,7 +4,7 @@
 <div class="card mt-5">
     <div class="card-header d-flex justify-content-between align-items-center">
         <h1>{{ __('b::product.title.index') }}</h1>
-        <a class="btn btn-success" href="{{ route('backend.product.create') }}">{{ __('b::product.button.add') }}</a>
+        {!! Html::linkRoute('backend.product.create', __('b::product.button.add'), null, ['class' => 'btn btn-success']) !!}
     </div>
 
     <div class="card-body">
@@ -22,14 +22,10 @@
                     <td>{{ $product->title }}</td>
                     <td>{!! $product->active !!}</td>
                     <td>
-                        <a class="btn btn-dark" href="{{ route('backend.product.edit', $product->id) }}">
-                            {{ __('b::product.button.edit') }}
-                        </a>
+                        {!! Html::linkRoute('backend.product.edit', __('b::product.button.edit'), [$product->id], ['class' => 'btn btn-dark']) !!}
                     </td>
                     <td>
-                        <a class="btn btn-danger" href="{{ route('backend.product.destroy', $product->id) }}">
-                            {{ __('b::product.button.delete') }}
-                        </a>
+                        {!! Html::linkRoute('backend.product.destroy', __('b::product.button.delete'), [$product->id], ['class' => 'btn btn-danger']) !!}
                     </td>
                 </tr>
             @empty
@@ -40,7 +36,7 @@
                 </tr>
             @endforelse
         </table>
-        <a class="btn btn-success" href="{{ route('backend.product.export-excel') }}">{{ __('b::product.button.export-excel') }}</a>
+        {!! Html::linkRoute('backend.product.export-excel', __('b::product.button.export-excel'), null, ['class' => 'btn btn-success']) !!}
     </div>
 </div>
 @endsection

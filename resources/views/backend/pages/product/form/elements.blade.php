@@ -66,9 +66,9 @@
             {!! Form::label('image', __('b::product.label.main-image'), ['class' => 'col-md-4 text-md-right']) !!}
             <div class="col-md-8">
                 @if(isset($product->image))
-                    <img src="{{asset($product->image)}}" alt="{{$product->image}}" id="image-edit-preview" class="img-fluid mb-3 rounded border bg-light">
+                    {!! Html::image(asset($product->image), $product->image, ['id'=> 'image-edit-preview', 'class' => 'img-fluid mb-3 rounded border bg-light']) !!}
                 @endif
-                <img id="image-preview" src="" class="img-fluid mb-3 rounded border bg-light">
+                {!! Html::image(null, null, ['id'=> 'image-preview', 'class' => 'img-fluid mb-3 rounded border bg-light']) !!}
                 {!! Form::file('image', ['id' => 'image-input', 'class' => 'd-block']) !!}
             </div>
         {!! Form::group_close() !!}
@@ -80,7 +80,7 @@
                     @if(isset($product->images))
                         @foreach($product->images as $image)
                             <div class="col-sm-6">
-                                <img src="{{asset($image->path)}}" alt="{{$image->path}}" class="image-edit-preview img-fluid mb-3 rounded border bg-light">
+                                {!! Html::image(asset($image->path), $image->path, ['class' => 'image-edit-preview img-fluid mb-3 rounded border bg-light']) !!}
                             </div>
                         @endforeach
                     @endif
@@ -94,6 +94,6 @@
 
 <div class="float-right">
     {!! Form::submit(__('b::product.button.send'), ['class' => 'btn btn-primary']) !!}
-    <a class="btn btn-dark" href="{{ route('backend.product.index') }}">{{ __('b::product.button.back') }}</a>
+    {!! Html::linkRoute('backend.product.index', __('b::product.button.back'), null, ['class' => 'btn btn-dark']) !!}
 </div>
 

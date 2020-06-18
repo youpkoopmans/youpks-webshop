@@ -4,7 +4,7 @@
 <div class="card mt-5">
     <div class="card-header d-flex justify-content-between align-items-center">
         <h1>{{ __('b::category.title.index') }}</h1>
-        <a class="btn btn-success" href="{{ route('backend.category.create') }}">{{ __('b::category.button.add') }}</a>
+        {!! Html::linkRoute('backend.category.create', __('b::category.button.add'), null, ['class' => 'btn btn-success']) !!}
     </div>
 
     <div class="card-body">
@@ -20,14 +20,10 @@
                     <td>{{ $category->title }}</td>
                     <td>{!! $category->active !!}</td>
                     <td>
-                        <a class="btn btn-dark" href="{{ route('backend.category.edit', $category->id) }}">
-                            {{ __('b::category.button.edit') }}
-                        </a>
+                        {!! Html::linkRoute('backend.category.edit', __('b::category.button.edit'), [$category->id], ['class' => 'btn btn-dark']) !!}
                     </td>
                     <td>
-                        <a class="btn btn-danger" href="{{ route('backend.category.destroy', $category->id) }}">
-                            {{ __('b::category.button.delete') }}
-                        </a>
+                        {!! Html::linkRoute('backend.category.destroy', __('b::category.button.delete'), [$category->id], ['class' => 'btn btn-danger']) !!}
                     </td>
                 </tr>
                 @foreach($category->children as $category)
@@ -35,14 +31,10 @@
                         <td>----- {{ $category->title }}</td>
                         <td>{!! $category->active !!}</td>
                         <td>
-                            <a class="btn btn-dark" href="{{ route('backend.category.edit', $category->id) }}">
-                                {{ __('b::category.button.edit') }}
-                            </a>
+                            {!! Html::linkRoute('backend.category.edit', __('b::category.button.edit'), [$category->id], ['class' => 'btn btn-dark']) !!}
                         </td>
                         <td>
-                            <a class="btn btn-danger" href="{{ route('backend.category.destroy', $category->id) }}">
-                                {{ __('b::category.button.delete') }}
-                            </a>
+                            {!! Html::linkRoute('backend.category.destroy', __('b::category.button.delete'), [$category->id], ['class' => 'btn btn-danger']) !!}
                         </td>
                     </tr>
                     @foreach($category->children as $category)
@@ -50,14 +42,10 @@
                             <td>---------- {{ $category->title }}</td>
                             <td>{!! $category->active !!}</td>
                             <td>
-                                <a class="btn btn-dark" href="{{ route('backend.category.edit', $category->id) }}">
-                                    {{ __('b::category.button.edit') }}
-                                </a>
+                                {!! Html::linkRoute('backend.category.edit', __('b::category.button.edit'), [$category->id], ['class' => 'btn btn-dark']) !!}
                             </td>
                             <td>
-                                <a class="btn btn-danger" href="{{ route('backend.category.destroy', $category->id) }}">
-                                    {{ __('b::category.button.delete') }}
-                                </a>
+                                {!! Html::linkRoute('backend.category.destroy', __('b::category.button.delete'), [$category->id], ['class' => 'btn btn-danger']) !!}
                             </td>
                         </tr>
                     @endforeach
@@ -70,7 +58,7 @@
                 </tr>
             @endforelse
         </table>
-        <a class="btn btn-success" href="{{ route('backend.category.export-excel') }}">{{ __('b::category.button.export-excel') }}</a>
+        {!! Html::linkRoute('backend.category.export-excel', __('b::category.button.export-excel'), null, ['class' => 'btn btn-success']) !!}
     </div>
 </div>
 @endsection
