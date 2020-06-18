@@ -5,15 +5,15 @@ namespace App\Repositories;
 
 use App\Models\Category;
 use App\Traits\CommonFields;
-use App\Traits\CommonQueries;
+use App\Traits\Scopes;
 use App\Traits\StatusAlert;
 use Whoops\Exception\ErrorException;
 
 class CategoryRepository extends BaseRepository implements CategoryRepositoryInterface
 {
     use CommonFields,
-        CommonQueries,
-        StatusAlert;
+        StatusAlert,
+        Scopes;
 
     /**
      * CategoryRepository constructor.
@@ -39,7 +39,6 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
     {
         return $this->model->allLeaves();
     }
-
 
     /**
      * @param $attributes

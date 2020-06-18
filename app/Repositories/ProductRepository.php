@@ -5,8 +5,8 @@ namespace App\Repositories;
 
 use App\Models\Product;
 use App\Traits\CommonFields;
-use App\Traits\CommonQueries;
 use App\Traits\MultipleImages;
+use App\Traits\Scopes;
 use App\Traits\SingleImage;
 use App\Traits\StatusAlert;
 use Illuminate\Support\Collection;
@@ -15,11 +15,10 @@ use Whoops\Exception\ErrorException;
 class ProductRepository extends BaseRepository implements ProductRepositoryInterface
 {
     use CommonFields,
-        CommonQueries,
         SingleImage,
         MultipleImages,
-        StatusAlert;
-
+        StatusAlert,
+        Scopes;
     /**
      * ProductRepository constructor.
      * @param Product $model

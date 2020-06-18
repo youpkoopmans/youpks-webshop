@@ -7,12 +7,6 @@
     </div>
 
     <div class="card-body">
-        @if (session('status'))
-            <div class="alert alert-success" role="alert">
-                {{ session('status') }}
-            </div>
-        @endif
-
         {!! Form::open(['route' => ['backend.brand.update', $brand->id], 'errors' => $errors]) !!}
 
         @include('b:brand::form.elements')

@@ -5,16 +5,15 @@ namespace App\Repositories;
 
 use App\Models\Brand;
 use App\Traits\CommonFields;
-use App\Traits\CommonQueries;
+use App\Traits\Scopes;
 use App\Traits\StatusAlert;
 use Whoops\Exception\ErrorException;
 
 class BrandRepository extends BaseRepository implements BrandRepositoryInterface
 {
     use CommonFields,
-        CommonQueries,
-        StatusAlert;
-
+        StatusAlert,
+        Scopes;
     /**
      * BrandRepository constructor.
      * @param Brand $model

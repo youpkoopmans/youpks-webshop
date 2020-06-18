@@ -1,24 +1,22 @@
 <div class="row">
     <div class="col-md-6">
-        <div class="form-group row">
-            {!! Form::label('root_category', __('b::category.label.root-category'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
-            <div class="col-md-8">
-                {!! Form::select('root_category', $categories, isset($category) ? [$category->getRoot()->title => $category->getRoot()->id] : old('root_category'), ['class' => 'form-control', 'placeholder' => 'No root']) !!}
-            </div>
-        </div>
 
-        <div class="form-group row">
-            {!! Form::label('title', __('b::category.label.title'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
+        {!! Form::group_open('root_category row') !!}
+            {!! Form::label('root_category', __('b::category.label.root-category'), ['class' => 'col-md-4 text-md-right']) !!}
             <div class="col-md-8">
-                {!! Form::text('title', isset($category) ? $category->title : old('title'), ['class' => 'form-control']) !!}
-                @error('title')
-                <span class="validation-error">{{ $message }}</span>
-                @enderror
+                {!! Form::select('root_category', $categories, isset($category) ? [$category->getRoot()->title => $category->getRoot()->id] : old('root_category'), ['placeholder' => 'No root']) !!}
             </div>
-        </div>
+        {!! Form::group_close() !!}
 
-        <div class="form-group row">
-            {!! Form::label('published_at', __('b::category.label.active'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
+        {!! Form::group_open('title row') !!}
+            {!! Form::label('title', __('b::category.label.title'), ['class' => 'col-md-4 text-md-right']) !!}
+            <div class="col-md-8">
+                {!! Form::text('title', isset($category) ? $category->title : old('title')) !!}
+            </div>
+        {!! Form::group_close() !!}
+
+        {!! Form::group_open('published_at row') !!}
+            {!! Form::label('published_at', __('b::category.label.active'), ['class' => 'col-md-4 text-md-right']) !!}
             <div class="col-md-8">
                 <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
                     <label class="btn btn-outline-secondary w-50">
@@ -31,7 +29,7 @@
                     </label>
                 </div>
             </div>
-        </div>
+        {!! Form::group_close() !!}
 
     </div>
 </div>

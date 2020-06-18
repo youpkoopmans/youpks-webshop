@@ -183,6 +183,7 @@ return [
         App\Providers\MigrationServiceProvider::class,
         App\Providers\TranslationServiceProvider::class,
         App\Providers\HelperServiceProvider::class,
+        App\Providers\HtmlServiceProvider::class,
 
     ],
 

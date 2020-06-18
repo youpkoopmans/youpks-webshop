@@ -49,7 +49,7 @@ class VerificationController extends Controller
     {
         return $request->user()->hasVerifiedEmail()
             ? redirect($this->redirectPath())
-            : view('backend.auth.verify');
+            : view('b::auth.verify');
     }
 
     /**

@@ -14,15 +14,13 @@
                         </div>
                     @endif
                     {!! Form::open(['route' => 'password.email', 'errors' => $errors]) !!}
-                        <div class="form-group row">
-                            {!! Form::label('email', __('E-Mail Address'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
+
+                        {!! Form::group_open('email row') !!}
+                            {!! Form::label('email', __('b::auth.label.email-adress'), ['class' => 'col-md-4 text-md-right']) !!}
                             <div class="col-md-6">
-                                {!! Form::text('email', old('email'), ['class' => 'form-control']) !!}
-                                @error('email')
-                                <span class="validation-error">{{ $message }}</span>
-                                @enderror
+                                {!! Form::text('email', old('email')) !!}
                             </div>
-                        </div>
+                        {!! Form::group_close() !!}
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

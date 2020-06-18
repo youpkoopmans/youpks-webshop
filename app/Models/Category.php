@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use App\Traits\ModelHelpers;
+use App\Traits\Scopes;
 use Baum\Node;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Node
 {
-    use ModelHelpers;
+    use ModelHelpers,
+        Scopes;
 
     /**
      * @var string[]

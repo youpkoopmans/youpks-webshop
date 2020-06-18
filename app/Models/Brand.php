@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use App\Traits\ModelHelpers;
+use App\Traits\Scopes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Brand extends Model
 {
-    use ModelHelpers;
+    use ModelHelpers,
+        Scopes;
 
     /**
      * @var string[]

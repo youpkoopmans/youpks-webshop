@@ -10,34 +10,28 @@
                 <div class="card-body">
                     {!! Form::open(['route' => 'login', 'errors' => $errors]) !!}
 
-                        <div class="form-group row">
-                            {!! Form::label('email', __('b::auth.label.email-adress'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
+                        {!! Form::group_open('email row') !!}
+                            {!! Form::label('email', __('b::auth.label.email-adress'), ['class' => 'col-md-4 text-md-right']) !!}
                             <div class="col-md-6">
-                                {!! Form::text('email', old('email'), ['class' => 'form-control']) !!}
-                                @error('email')
-                                    <span class="validation-error">{{ $message }}</span>
-                                @enderror
+                                {!! Form::text('email', old('email')) !!}
                             </div>
-                        </div>
+                        {!! Form::group_close() !!}
 
-                        <div class="form-group row">
-                            {!! Form::label('password', __('b::auth.label.password'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
+                        {!! Form::group_open('password row') !!}
+                            {!! Form::label('password', __('b::auth.label.password'), ['class' => 'col-md-4 text-md-right']) !!}
                             <div class="col-md-6">
-                                {!! Form::password('password', ['class' => 'form-control']) !!}
-                                @error('password')
-                                    <span class="validation-error">{{ $message }}</span>
-                                @enderror
+                                {!! Form::password('password') !!}
                             </div>
-                        </div>
+                        {!! Form::group_close() !!}
 
-                        <div class="form-group row">
+                        {!! Form::group_open('remember row') !!}
                             <div class="col-md-6 offset-md-4">
                                 {!! Form::checkbox('remember', null, ['class' => 'form-check-input']) !!}
-                                {!! Form::label('remember', __('b::auth.label.remember-password'), ['class' => 'form-check-label']) !!}
+                                {!! Form::label('remember', __('b::auth.label.remember-password')) !!}
                             </div>
-                        </div>
+                        {!! Form::group_close() !!}
 
-                        <div class="form-group row mb-0">
+                        {!! Form::group_open('row mb-0') !!}
                             <div class="col-md-8 offset-md-4">
                                 {!! Form::submit(__('b::auth.button.login'), ['class' => 'btn btn-primary']) !!}
                                 @if (Route::has('password.request'))
@@ -46,7 +40,7 @@
                                     </a>
                                 @endif
                             </div>
-                        </div>
+                        {!! Form::group_close() !!}
 
                     {!! Form::close() !!}
                 </div>

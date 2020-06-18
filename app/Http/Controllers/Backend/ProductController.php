@@ -73,11 +73,12 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $brands = $this->brandRepository->whereNotNull('published_at')
+        $brands = $this->brandRepository->newQuery()
+            ->published()
             ->orderBy('title', 'ASC')
             ->pluck('title', 'id');
         $categories = $this->categoryRepository->allLeaves()
-            ->whereNotNull('published_at')
+            ->published()
             ->orderBy('title', 'ASC')
             ->pluck('title', 'id');
         $data = [
@@ -111,11 +112,12 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $product = $this->productRepository->findOrFail($product->id);
-        $brands = $this->brandRepository->whereNotNull('published_at')
+        $brands = $this->brandRepository->newQuery()
+            ->published()
             ->orderBy('title', 'ASC')
             ->pluck('title', 'id');
         $categories = $this->categoryRepository->allLeaves()
-            ->whereNotNull('published_at')
+            ->published()
             ->orderBy('title', 'ASC')
             ->pluck('title', 'id');
         $data = [

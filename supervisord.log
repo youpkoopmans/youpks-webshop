@@ -108,3 +108,39 @@
 2020-06-03 13:26:37,870 INFO supervisord started with pid 1
 2020-06-03 13:26:38,873 INFO spawned: 'php-fpm' with pid 7
 2020-06-03 13:26:40,063 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2020-06-04 07:24:17,950 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2020-06-04 07:24:17,968 INFO supervisord started with pid 1
+2020-06-04 07:24:18,982 INFO spawned: 'php-fpm' with pid 7
+2020-06-04 07:24:20,154 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2020-06-05 09:06:03,890 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2020-06-05 09:06:03,917 INFO supervisord started with pid 1
+2020-06-05 09:06:04,921 INFO spawned: 'php-fpm' with pid 7
+2020-06-05 09:06:06,129 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2020-06-08 11:03:09,095 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2020-06-08 11:03:09,106 INFO supervisord started with pid 1
+2020-06-08 11:03:10,124 INFO spawned: 'php-fpm' with pid 7
+2020-06-08 11:03:11,314 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2020-06-09 06:55:15,318 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2020-06-09 06:55:15,328 INFO supervisord started with pid 1
+2020-06-09 06:55:16,332 INFO spawned: 'php-fpm' with pid 7
+2020-06-09 06:55:17,550 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2020-06-09 09:50:12,516 INFO reaped unknown pid 176
+2020-06-09 09:57:58,442 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2020-06-09 09:57:58,460 INFO supervisord started with pid 1
+2020-06-09 09:57:59,463 INFO spawned: 'php-fpm' with pid 7
+2020-06-09 09:58:00,664 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2020-06-09 13:43:56,561 WARN received SIGQUIT indicating exit request
+2020-06-09 13:43:56,562 INFO waiting for php-fpm to die
+2020-06-09 13:43:56,576 INFO stopped: php-fpm (exit status 0)
+2020-06-11 07:24:37,526 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2020-06-11 07:24:37,536 INFO supervisord started with pid 1
+2020-06-11 07:24:38,539 INFO spawned: 'php-fpm' with pid 7
+2020-06-11 07:24:39,735 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2020-06-11 07:38:00,613 INFO reaped unknown pid 26
+2020-06-11 07:42:51,974 WARN received SIGQUIT indicating exit request
+2020-06-11 07:42:51,975 INFO waiting for php-fpm to die
+2020-06-11 07:42:51,989 INFO stopped: php-fpm (exit status 0)
+2020-06-18 09:25:47,463 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2020-06-18 09:25:47,482 INFO supervisord started with pid 1
+2020-06-18 09:25:48,484 INFO spawned: 'php-fpm' with pid 7
+2020-06-18 09:25:50,430 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)

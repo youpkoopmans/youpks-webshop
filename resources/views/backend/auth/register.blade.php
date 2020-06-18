@@ -9,53 +9,41 @@
 
                 <div class="card-body">
                     {!! Form::open(['route' => 'register', 'errors' => $errors]) !!}
-                        <div class="form-group row">
-                            {!! Form::label('name', __('b::auth.label.name'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
+
+                        {!! Form::group_open('name row') !!}
+                            {!! Form::label('name', __('b::auth.label.name'), ['class' => 'col-md-4 text-md-right']) !!}
                             <div class="col-md-6">
-                                {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
-                                @error('name')
-                                    <span class="validation-error">{{ $message }}</span>
-                                @enderror
+                                {!! Form::text('name', old('name')) !!}
                             </div>
-                        </div>
+                        {!! Form::group_close() !!}
 
-                        <div class="form-group row">
-                            {!! Form::label('email', __('b::auth.label.email-adress'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
+                        {!! Form::group_open('email row') !!}
+                            {!! Form::label('email', __('b::auth.label.email-adress'), ['class' => 'col-md-4 text-md-right']) !!}
                             <div class="col-md-6">
-                                {!! Form::text('email', old('email'), ['class' => 'form-control']) !!}
-                                @error('email')
-                                    <span class="validation-error">{{ $message }}</span>
-                                @enderror
+                                {!! Form::text('email', old('email')) !!}
                             </div>
-                        </div>
+                        {!! Form::group_close() !!}
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('b::auth.label.password') }}</label>
-
+                        {!! Form::group_open('password row') !!}
+                            {!! Form::label('password', __('b::auth.label.password'), ['class' => 'col-md-4 text-md-right']) !!}
                             <div class="col-md-6">
-                                <input type="password" class="form-control" name="password">
-                                @error('password')
-                                    <span class="validation-error">{{ $message }}</span>
-                                @enderror
+                                {!! Form::password('password') !!}
                             </div>
-                        </div>
+                        {!! Form::group_close() !!}
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('b::auth.label.confirm-password') }}</label>
-
+                        {!! Form::group_open('password-confirm row') !!}
+                        {!! Form::label('password-confirm', __('b::auth.label.confirm-password'), ['class' => 'col-md-4 text-md-right']) !!}
                             <div class="col-md-6">
-                                <input type="password" class="form-control" name="password_confirmation">
-                                @error('password_confirmation')
-                                    <span class="validation-error">{{ $message }}</span>
-                                @enderror
+                                {!! Form::password('password_confirmation') !!}
                             </div>
-                        </div>
+                        {!! Form::group_close() !!}
 
-                        <div class="form-group row mb-0">
+                        {!! Form::group_open('row mb-0') !!}
                             <div class="col-md-8 offset-md-4">
                                 {!! Form::submit(__('b::auth.button.register'), ['class' => 'btn btn-primary']) !!}
                             </div>
-                        </div>
+                        {!! Form::group_close() !!}
+
                     {!! Form::close() !!}
                 </div>
             </div>

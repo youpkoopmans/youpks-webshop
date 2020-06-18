@@ -8,11 +8,7 @@
     </div>
 
     <div class="card-body">
-        @if (session('status'))
-            <div class="alert alert-success" role="alert">
-                {{ session('status') }}
-            </div>
-        @endif
+        <x-alert message="{{session('status')}}"/>
         <table class="table">
             <tr>
                 <th class="w-25">{{ __('b::brand.table.id') }}</th>
