@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\BrandController as Brand;
 
 // Brand Index

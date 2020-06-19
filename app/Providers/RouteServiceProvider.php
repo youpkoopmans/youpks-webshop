@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Route;
-use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use Route;
+use LaravelLocalization;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -45,24 +45,27 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->mapApiRoutes();
 
-        $this->mapWebRoutes();
+        $this->mapBackendRoutes();
+
+        $this->mapFrontendRoutes();
 
         //
     }
 
-    /**
-     * Define the "web" routes for the application.
-     *
-     * These routes all receive session state, CSRF protection, etc.
-     *
-     * @return void
-     */
-    protected function mapWebRoutes()
+    protected function mapBackendRoutes()
     {
         Route::middleware('web')
             ->namespace($this->namespace)
             ->prefix(LaravelLocalization::setLocale())
-            ->group(base_path('routes/web.php'));
+            ->group(route_backend('backend.php'));
+    }
+
+    protected function mapFrontendRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->prefix(LaravelLocalization::setLocale())
+            ->group(route_frontend('frontend.php'));
     }
 
     /**
