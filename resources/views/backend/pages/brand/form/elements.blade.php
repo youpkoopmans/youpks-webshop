@@ -11,16 +11,10 @@
         {!! Form::group_open('published_at row') !!}
             {!! Form::label('published_at', __('b::brand.label.active'), ['class' => 'col-md-4 text-md-right']) !!}
             <div class="col-md-8">
-                <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
-                    <label class="btn btn-outline-secondary w-50">
-                        {!! Form::input('radio', 'active', 1,  [isset($brand) && $brand->published_at != null ? 'checked' : null]) !!}
-                        <i class="fa fa-check"></i> {{ __('b::brand.label.yes') }}
-                    </label>
-                    <label class="btn btn-outline-secondary w-50">
-                        {!! Form::input('radio', 'active', 0,  [isset($brand) && $brand->published_at == null ? 'checked' : null]) !!}
-                        <i class="fa fa-ban"></i> {{ __('b::brand.label.no') }}
-                    </label>
-                </div>
+                {!! Form::published_at('brand',
+                    [isset($brand) && $brand->published_at != null ? 'checked' : null],
+                    [isset($brand) && $brand->published_at == null ? 'checked' : null]
+                ) !!}
             </div>
         {!! Form::group_close() !!}
 

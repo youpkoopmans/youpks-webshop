@@ -14,8 +14,18 @@ use Illuminate\Support\ViewErrorBag;
  */
 class FormBuilder extends CollectiveFormBuilder
 {
+    /**
+     * @var
+     */
     protected $errors;
 
+    /**
+     * FormBuilder constructor.
+     * @param HtmlBuilder $html
+     * @param UrlGenerator $url
+     * @param Factory $view
+     * @param $csrfToken
+     */
     public function __construct(HtmlBuilder $html, UrlGenerator $url, Factory $view, $csrfToken)
     {
         parent::__construct($html, $url, $view, $csrfToken);
@@ -408,6 +418,62 @@ class FormBuilder extends CollectiveFormBuilder
     {
         $html = parent::file($name, $options);
         $html .= $this->addErrors($name);
+
+        return $html;
+    }
+
+    /**
+     * @param array $options
+     * @return \Illuminate\Support\HtmlString
+     */
+    public function btn_group_open($options = [])
+    {
+        $options = $this->addClass('btn-group btn-group-toggle', $options);
+        return $this->toHtmlString('<div' . $this->html->attributes($options) . ' data-toggle="buttons">');
+    }
+
+    /**
+     * Generate HTML for closing button group.
+     *
+     * @return string
+     */
+    public function btn_group_close()
+    {
+        return '</div>';
+    }
+
+    /**
+     * @param $type
+     * @param $name
+     * @param $value
+     * @param $btnLabelValue
+     * @param bool $btnLabelIcon
+     * @param string $btnLabelIconClass
+     * @param array $inputOptions
+     * @param array $btnOptions
+     * @return string
+     */
+    public function btn_group_btn($type, $name, $value, $btnLabelValue, $btnLabelIcon = false, $btnLabelIconClass = '', $inputOptions = [], $btnOptions = [])
+    {
+        $html = $this->toHtmlString('<label' . $this->html->attributes($btnOptions) . '>');
+        $html .= $this->input($type, $name, $value, $inputOptions);
+        $html .= $this->toHtmlString($btnLabelIcon ? '<i class="fa ' . $btnLabelIconClass .'"></i> ' . $btnLabelValue : $btnLabelValue);
+        $html .= $this->toHtmlString('</label>');
+        return $html;
+    }
+
+    /**
+     * @param $model
+     * @param $inputOptionsTrue
+     * @param $inputOptionsFalse
+     * @return string
+     */
+    public function published_at($model, $inputOptionsTrue, $inputOptionsFalse)
+    {
+        $html = $this->btn_group_open(['class' => 'w-100']);
+        $html .= $this->btn_group_btn('radio', 'active', 1, __("b::$model.label.yes"), true, 'fa-check', $inputOptionsTrue, ['class' => 'btn btn-outline-secondary w-50']);
+        $html .= $this->btn_group_btn('radio', 'active', 0, __("b::$model.label.no"), true, 'fa-ban', $inputOptionsFalse, ['class' => 'btn btn-outline-secondary w-50']);
+        $html .= $this->btn_group_close();
 
         return $html;
     }
