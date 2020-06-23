@@ -3,6 +3,7 @@
 
 namespace App\Repositories;
 
+use App\Interfaces\BrandRepositoryInterface;
 use App\Models\Brand;
 use App\Traits\CommonFields;
 use App\Traits\Scopes;
@@ -56,6 +57,20 @@ class BrandRepository extends BaseRepository implements BrandRepositoryInterface
         $brand = parent::findOrFail($id);
         $this->destroyAlert($brand->title);
         parent::destroy($id);
+    }
+
+    /**
+     * @param $title
+     */
+    public function seed($title)
+    {
+        if (!$this->model->whereTitle($title)->exists()) {
+            parent::create([
+                'title' => $title,
+                'slug' => \Str::slug($title),
+                'published_at' => now()
+            ]);
+        }
     }
 
 }

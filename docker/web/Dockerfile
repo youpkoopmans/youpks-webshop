@@ -25,7 +25,7 @@ RUN mkdir -p /root/.local/share/mkcert/ \
  && mv /usr/local/share/certs/rootCA-key.pem /root/.local/share/mkcert/rootCA-key.pem \
  && chmod +x /usr/local/bin/mkcert \
  && mkdir -p /usr/local/share/certs/ \
- && mkcert -cert-file /usr/local/share/certs/localhost.pem -key-file /usr/local/share/certs/localhost-key.pem webshop-youpks.test
+ && mkcert -cert-file /usr/local/share/certs/localhost.pem -key-file /usr/local/share/certs/localhost-key.pem webshop.youpks.test
 
 # Copy files to working directory
 RUN mkdir -p /var/www/html && chown -R www-data:www-data /var/www/html

@@ -1,23 +1,11 @@
 <?php
 
-
-namespace App\Repositories;
-
+namespace App\Interfaces;
 
 use Illuminate\Support\Collection;
 
-interface CategoryRepositoryInterface extends BaseRepositoryInterface
+interface BrandRepositoryInterface extends BaseRepositoryInterface
 {
-    /**
-     * @return mixed
-     */
-    public function roots();
-
-    /**
-     * @return mixed
-     */
-    public function allLeaves();
-
     /**
      * @param $attributes
      * @param $request
@@ -38,4 +26,9 @@ interface CategoryRepositoryInterface extends BaseRepositoryInterface
      */
     public function destroy($ids);
 
+    /**
+     * @param $title
+     * @return mixed
+     */
+    public function seed($title);
 }

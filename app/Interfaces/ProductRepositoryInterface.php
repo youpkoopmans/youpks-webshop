@@ -1,14 +1,11 @@
 <?php
 
-
-namespace App\Repositories;
-
+namespace App\Interfaces;
 
 use Illuminate\Support\Collection;
 
-interface BrandRepositoryInterface extends BaseRepositoryInterface
+interface ProductRepositoryInterface extends BaseRepositoryInterface
 {
-
     /**
      * @param $attributes
      * @param $request
@@ -29,5 +26,11 @@ interface BrandRepositoryInterface extends BaseRepositoryInterface
      */
     public function destroy($ids);
 
-
+    /**
+     * @param $title
+     * @param $brand
+     * @param $category
+     * @return mixed
+     */
+    public function seed($title, $brand, $category);
 }

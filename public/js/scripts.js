@@ -53493,8 +53493,8 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Windows 10\Development\webshop-youpks.test\resources\js\scripts.js */"./resources/js/scripts.js");
-module.exports = __webpack_require__(/*! C:\Users\Windows 10\Development\webshop-youpks.test\resources\sass\styles.scss */"./resources/sass/styles.scss");
+__webpack_require__(/*! C:\Users\youpkoopmans\websites\docker\webshop.youpks.test\resources\js\scripts.js */"./resources/js/scripts.js");
+module.exports = __webpack_require__(/*! C:\Users\youpkoopmans\websites\docker\webshop.youpks.test\resources\sass\styles.scss */"./resources/sass/styles.scss");
 
 
 /***/ })

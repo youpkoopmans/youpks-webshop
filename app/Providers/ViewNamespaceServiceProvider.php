@@ -6,6 +6,9 @@ use Illuminate\Support\ServiceProvider;
 
 class ViewNamespaceServiceProvider extends ServiceProvider
 {
+    /**
+     * Boot all View directories & define Namespaces
+     */
     public function boot()
     {
         $this->bootPageViews('home');
@@ -17,6 +20,9 @@ class ViewNamespaceServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../../resources/views/frontend/', 'f');
     }
 
+    /**
+     * @param $model
+     */
     private function bootPageViews($model)
     {
         $this->loadViewsFrom(__DIR__ . '/../../resources/views/backend/pages/' . $model, 'b:' . $model);

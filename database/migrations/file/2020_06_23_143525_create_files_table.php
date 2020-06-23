@@ -2,9 +2,8 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
 
-class Update3ProductsTable extends Migration
+class CreateFilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +12,11 @@ class Update3ProductsTable extends Migration
      */
     public function up()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->double('price')->after('body');
+        Schema::create('files', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('path');
+            $table->string('type');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +27,6 @@ class Update3ProductsTable extends Migration
      */
     public function down()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->dropColumn('price');
-        });
+        Schema::dropIfExists('files');
     }
 }

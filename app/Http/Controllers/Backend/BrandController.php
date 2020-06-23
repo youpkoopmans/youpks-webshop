@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Exports\BrandExport;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
-use App\Repositories\BrandRepositoryInterface;
+use App\Interfaces\BrandRepositoryInterface;
 use App\Validation\BrandRules;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;

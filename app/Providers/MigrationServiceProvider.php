@@ -6,6 +6,9 @@ use Illuminate\Support\ServiceProvider;
 
 class MigrationServiceProvider extends ServiceProvider
 {
+    /**
+     * Boot all Migrations
+     */
     public function boot()
     {
         $this->bootMigrations('user');
@@ -15,9 +18,12 @@ class MigrationServiceProvider extends ServiceProvider
         $this->bootMigrations('file');
     }
 
-    private function bootMigrations($model)
+    /**
+     * @param $directory
+     */
+    private function bootMigrations($directory)
     {
-        $this->loadMigrationsFrom(__DIR__ . "/../../database/migrations/$model/");
+        $this->loadMigrationsFrom(__DIR__ . "/../../database/migrations/$directory/");
     }
 
 

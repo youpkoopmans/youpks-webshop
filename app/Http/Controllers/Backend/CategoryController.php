@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Exports\CategoryExport;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use App\Repositories\CategoryRepositoryInterface;
+use App\Interfaces\CategoryRepositoryInterface;
 use App\Validation\CategoryRules;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;

@@ -17,3 +17,5 @@ yarn-error.log
 docker-compose.yml
 .idea/
 
+
+private_html

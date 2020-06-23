@@ -3,6 +3,7 @@
 
 namespace App\Repositories;
 
+use App\Interfaces\CategoryRepositoryInterface;
 use App\Models\Category;
 use App\Traits\CommonFields;
 use App\Traits\Scopes;
@@ -81,5 +82,25 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
         $this->destroyAlert($category->title);
         parent::destroy($id);
     }
+
+
+    /**
+     * @param $title
+     * @param null $parent
+     */
+    public function seed($title, $parent = null)
+    {
+        if (!$this->model->whereTitle($title)->exists()) {
+            $category = parent::create([
+                'title' => $title,
+                'slug' => \Str::slug($title),
+                'published_at' => now()
+            ]);
+            if($parent != null){
+                $category->makeChildOf($this->model->whereTitle($parent)->first());
+            }
+        }
+    }
+
 
 }

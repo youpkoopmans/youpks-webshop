@@ -1,8 +1,6 @@
 <?php
 
-
-namespace App\Repositories;
-
+namespace App\Interfaces;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -10,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 interface BaseRepositoryInterface
 {
     public function createEmptyModel(): Model;
-
 
     /**
      * Returns al the models from the databass
