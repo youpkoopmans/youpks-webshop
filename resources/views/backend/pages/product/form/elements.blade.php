@@ -62,7 +62,7 @@
                 @if(isset($product->image))
                     {!! Html::image(asset($product->image), $product->image, ['id'=> 'image-edit-preview', 'class' => 'img-fluid mb-3 rounded border bg-light']) !!}
                 @endif
-                {!! Html::image(null, null, ['id'=> 'image-preview', 'class' => 'img-fluid mb-3 rounded border bg-light']) !!}
+                {!! Html::image('', '', ['id'=> 'image-preview', 'class' => 'img-fluid mb-3 rounded border bg-light']) !!}
                 {!! Form::file('image', ['id' => 'image-input', 'class' => 'd-block']) !!}
             </div>
         {!! Form::group_close() !!}
