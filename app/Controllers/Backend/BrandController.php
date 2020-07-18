@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Controllers\Backend;
 
 use App\Exports\BrandExport;
-use App\Http\Controllers\Controller;
+use App\Controllers\Controller;
 use App\Models\Brand;
 use App\Interfaces\BrandRepositoryInterface;
 use App\Validation\BrandRules;

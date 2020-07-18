@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Controllers\Backend;
 
 use App\Exports\CategoryExport;
-use App\Http\Controllers\Controller;
+use App\Controllers\Controller;
 use App\Models\Category;
 use App\Interfaces\CategoryRepositoryInterface;
 use App\Validation\CategoryRules;

@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Backend\HomeController as Home;
+use App\Controllers\Backend\HomeController;
 
 // Home Index
-Route::get('', [Home::class, 'index'])
+Route::get('', [HomeController::class, 'index'])
     ->name('.index');

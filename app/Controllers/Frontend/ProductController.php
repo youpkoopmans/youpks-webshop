@@ -1,16 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Controllers\Frontend;
 
 use App\Models\Product;
-
 
 class ProductController
 {
     /**
      * Display the index page of product.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function index()
     {
@@ -20,8 +19,8 @@ class ProductController
     /**
      * Display the depth page of product.
      *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
+     * @param Product $product
+     * @return void
      */
     public function show(Product $product)
     {

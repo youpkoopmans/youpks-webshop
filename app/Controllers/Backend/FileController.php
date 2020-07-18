@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
-use App\Models\File;
+use App\Controllers\Controller;
 use App\Interfaces\FileRepositoryInterface;
 
 class FileController extends Controller

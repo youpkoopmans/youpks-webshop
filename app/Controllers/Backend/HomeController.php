@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Controllers\Backend;
 
 use Illuminate\Contracts\Support\Renderable;
-use App\Http\Controllers\Controller;
-
+use App\Controllers\Controller;
 
 class HomeController extends Controller
 {

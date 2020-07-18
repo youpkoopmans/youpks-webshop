@@ -1,31 +1,31 @@
 <?php
 
-use App\Http\Controllers\Backend\BrandController as Brand;
+use App\Controllers\Backend\BrandController;
 
 // Brand Index
-Route::get('', [Brand::class, 'index'])
+Route::get('', [BrandController::class, 'index'])
     ->name('.index');
 
 // Brand Create
-Route::get('create', [Brand::class, 'create'])
+Route::get('create', [BrandController::class, 'create'])
     ->name('.create');
 
 // Brand Store
-Route::post('store', [Brand::class, 'store'])
+Route::post('store', [BrandController::class, 'store'])
     ->name('.store');
 
 // Brand Edit
-Route::get('edit/{brand}', [Brand::class, 'edit'])
+Route::get('edit/{brand}', [BrandController::class, 'edit'])
     ->name('.edit');
 
 // Brand Update
-Route::post('update/{brand}', [Brand::class, 'update'])
+Route::post('update/{brand}', [BrandController::class, 'update'])
     ->name('.update');
 
 // Brand Destroy
-Route::get('destroy/{brand}', [Brand::class, 'destroy'])
+Route::get('destroy/{brand}', [BrandController::class, 'destroy'])
     ->name('.destroy');
 
 // Brand Export Excel
-Route::get('export/excel', [Brand::class, 'exportExcel'])
+Route::get('export/excel', [BrandController::class, 'exportExcel'])
     ->name('.export-excel');

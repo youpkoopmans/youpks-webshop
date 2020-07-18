@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Controllers\Backend;
 
 use App\Exports\ProductExport;
-use App\Http\Controllers\Controller;
+use App\Controllers\Controller;
 use App\Models\Product;
 use App\Interfaces\ProductRepositoryInterface;
 use App\Interfaces\BrandRepositoryInterface;

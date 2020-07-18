@@ -1,7 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
-
+namespace App\Controllers\Frontend;
 
 use Illuminate\Contracts\Support\Renderable;
 
