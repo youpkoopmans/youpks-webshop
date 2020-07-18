@@ -88,7 +88,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
                 'intro' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                 'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                 'price' => 1150.00,
-                'image' => 'https://via.placeholder.com/500x500?text='.$title,
+                'image' => 'images/product/main-images/'.$title.'.jpg',
                 'published_at' => now()
             ]);
         }

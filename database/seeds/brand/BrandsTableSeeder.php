@@ -26,8 +26,14 @@ class BrandsTableSeeder extends Seeder
      */
     public function run()
     {
-        $this->brandRepository->seed('Apple');
-        $this->brandRepository->seed('Dell');
-        $this->brandRepository->seed('Lenovo');
+        $this->brandRepository->seed(
+            'Apple'
+        );
+        $this->brandRepository->seed(
+            'Dell'
+        );
+        $this->brandRepository->seed(
+            'Lenovo'
+        );
     }
 }

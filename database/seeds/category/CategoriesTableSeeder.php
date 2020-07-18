@@ -26,31 +26,100 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        $this->categoryRepository->seed('Computers');
-            $this->categoryRepository->seed('Laptops', 'Computers');
-                $this->categoryRepository->seed('Gaming laptops', 'Laptops');
-                $this->categoryRepository->seed('Zakelijke laptops', 'Laptops');
-            $this->categoryRepository->seed('Desktops', 'Computers');
-                $this->categoryRepository->seed('Gaming desktops', 'Desktops');
-                $this->categoryRepository->seed('Zakelijke desktops', 'Desktops');
-            $this->categoryRepository->seed('Monitors', 'Computers');
-                $this->categoryRepository->seed('Gaming monitors', 'Monitors');
-                $this->categoryRepository->seed('Zakelijke monitors', 'Monitors');
+        $this->categoryRepository->seed(
+            'Computers'
+        );
+            $this->categoryRepository->seed(
+                'Laptops',
+                $this->categoryRepository->newQuery()->whereTitle('Computers')->pluck('title')
+            );
+                $this->categoryRepository->seed(
+                    'Gaming laptops',
+                    $this->categoryRepository->newQuery()->whereTitle('Laptops')->pluck('title')
+                );
+                $this->categoryRepository->seed(
+                    'Zakelijke laptops',
+                    $this->categoryRepository->newQuery()->whereTitle('Laptops')->pluck('title')
+                );
+            $this->categoryRepository->seed(
+                'Desktops',
+                $this->categoryRepository->newQuery()->whereTitle('Computers')->pluck('title')
+            );
+                $this->categoryRepository->seed(
+                    'Gaming desktops',
+                    $this->categoryRepository->newQuery()->whereTitle('Desktops')->pluck('title')
+                );
+                $this->categoryRepository->seed(
+                    'Zakelijke desktops',
+                    $this->categoryRepository->newQuery()->whereTitle('Desktops')->pluck('title')
+                );
+            $this->categoryRepository->seed(
+                'Monitors',
+                $this->categoryRepository->newQuery()->whereTitle('Computers')->pluck('title')
+            );
+                $this->categoryRepository->seed(
+                    'Gaming monitors',
+                    $this->categoryRepository->newQuery()->whereTitle('Monitors')->pluck('title')
+                );
+                $this->categoryRepository->seed(
+                    'Zakelijke monitors',
+                    $this->categoryRepository->newQuery()->whereTitle('Monitors')->pluck('title')
+                );
 
-        $this->categoryRepository->seed('Telefoons');
-            $this->categoryRepository->seed('Mobiele telefoons', 'Telefoons');
-                $this->categoryRepository->seed('Smartphones', 'Mobiele telefoons');
-                $this->categoryRepository->seed('Gsm\'s', 'Mobiele telefoons');
-            $this->categoryRepository->seed('Vaste telefoons', 'Telefoons');
-                $this->categoryRepository->seed('DECT telefoons', 'Vaste telefoons');
-                $this->categoryRepository->seed('Handsets', 'Vaste telefoons');
+        $this->categoryRepository->seed(
+            'Telefoons'
+        );
+            $this->categoryRepository->seed(
+                'Mobiele telefoons',
+                $this->categoryRepository->newQuery()->whereTitle('Telefoons')->pluck('title')
+            );
+                $this->categoryRepository->seed(
+                    'Smartphones',
+                    $this->categoryRepository->newQuery()->whereTitle('Mobiele telefoons')->pluck('title')
+                );
+                $this->categoryRepository->seed(
+                    'Gsm\'s',
+                    $this->categoryRepository->newQuery()->whereTitle('Mobiele telefoons')->pluck('title')
+                );
+            $this->categoryRepository->seed(
+                'Vaste telefoons',
+                $this->categoryRepository->newQuery()->whereTitle('Telefoons')->pluck('title')
+            );
+                $this->categoryRepository->seed(
+                    'DECT telefoons',
+                    $this->categoryRepository->newQuery()->whereTitle('Vaste telefoons')->pluck('title')
+                );
+                $this->categoryRepository->seed(
+                    'Handsets',
+                    $this->categoryRepository->newQuery()->whereTitle('Vaste telefoons')->pluck('title')
+                );
 
-        $this->categoryRepository->seed('Beeld & geluid');
-            $this->categoryRepository->seed('Televisies & beamers', 'Beeld & geluid');
-                $this->categoryRepository->seed('Televisies', 'Televisies & beamers');
-                $this->categoryRepository->seed('Beamers', 'Televisies & beamers');
-            $this->categoryRepository->seed('Radio\'s & speakers', 'Beeld & geluid');
-                $this->categoryRepository->seed('Radio\'s', 'Radio\'s & speakers');
-                $this->categoryRepository->seed('Speakers', 'Radio\'s & speakers');
+        $this->categoryRepository->seed(
+            'Beeld & geluid'
+        );
+            $this->categoryRepository->seed(
+                'Televisies & beamers',
+                $this->categoryRepository->newQuery()->whereTitle('Beeld & geluid')->pluck('title')
+            );
+                $this->categoryRepository->seed(
+                    'Televisies',
+                    $this->categoryRepository->newQuery()->whereTitle('Televisies & beamers')->pluck('title')
+                );
+                $this->categoryRepository->seed(
+                    'Beamers',
+                    $this->categoryRepository->newQuery()->whereTitle('Televisies & beamers')->pluck('title')
+                );
+            $this->categoryRepository->seed(
+                'Radio\'s & speakers',
+                $this->categoryRepository->newQuery()->whereTitle('Beeld & geluid')->pluck('title')
+            );
+                $this->categoryRepository->seed(
+                    'Radio\'s',
+                    $this->categoryRepository->newQuery()->whereTitle('Radio\'s & speakers')->pluck('title')
+                );
+                $this->categoryRepository->seed(
+                    'Speakers',
+                    $this->categoryRepository->newQuery()->whereTitle('Radio\'s & speakers')->pluck('title')
+                );
     }
 }

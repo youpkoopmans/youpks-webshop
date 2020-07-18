@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use App\Interfaces\ProductRepositoryInterface;
+use App\Interfaces\BrandRepositoryInterface;
+use App\Interfaces\CategoryRepositoryInterface;
 
 class ProductsTableSeeder extends Seeder
 {
@@ -11,12 +13,30 @@ class ProductsTableSeeder extends Seeder
     private $productRepository;
 
     /**
+     * @var BrandRepositoryInterface
+     */
+    private $brandRepository;
+
+    /**
+     * @var CategoryRepositoryInterface
+     */
+    private $categoryRepository;
+
+    /**
      * ProductTableSeeder constructor.
      * @param ProductRepositoryInterface $productRepository
+     * @param BrandRepositoryInterface $brandRepository
+     * @param CategoryRepositoryInterface $categoryRepository
      */
-    public function __construct(ProductRepositoryInterface $productRepository)
+    public function __construct(
+        ProductRepositoryInterface $productRepository,
+        BrandRepositoryInterface $brandRepository,
+        CategoryRepositoryInterface $categoryRepository
+    )
     {
         $this->productRepository = $productRepository;
+        $this->brandRepository = $brandRepository;
+        $this->categoryRepository = $categoryRepository;
     }
 
     /**
@@ -26,6 +46,10 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
-        $this->productRepository->seed('Iphone 11 Pro', 'Apple', 'Smartphones');
+        $this->productRepository->seed(
+            'Iphone 11 Pro',
+            $this->brandRepository->newQuery()->whereTitle('Apple')->pluck('title'),
+            $this->categoryRepository->newQuery()->whereTitle('Smartphones')->pluck('title')
+        );
     }
 }

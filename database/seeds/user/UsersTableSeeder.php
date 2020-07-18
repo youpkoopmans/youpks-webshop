@@ -26,7 +26,16 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $this->userRepository->seed('Youp Koopmans', 'youpkoopmans@hotmail.com', '$2y$12$44MPz03iII3uFnPvxcvgH.GjzCy3iL1g2PTe6nRridFnm7h43bncO', false);
-        $this->userRepository->seed('User', 'user@webshop.nl', 'user1234');
+        $this->userRepository->seed(
+            'Youp Koopmans',
+            'info@youpks.nl',
+            '$2y$12$44MPz03iII3uFnPvxcvgH.GjzCy3iL1g2PTe6nRridFnm7h43bncO',
+            false
+        );
+        $this->userRepository->seed(
+            'User',
+            'user@webshop.nl',
+            'user1234'
+        );
     }
 }
