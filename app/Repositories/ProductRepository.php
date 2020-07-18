@@ -3,9 +3,9 @@
 
 namespace App\Repositories;
 
+use App\Interfaces\BrandRepositoryInterface;
+use App\Interfaces\CategoryRepositoryInterface;
 use App\Interfaces\ProductRepositoryInterface;
-use App\Models\Brand;
-use App\Models\Category;
 use App\Models\Product;
 use App\Traits\CommonFields;
 use App\Traits\MultipleImages;
@@ -22,13 +22,32 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         MultipleImages,
         StatusAlert,
         Scopes;
+
+    /**
+     * @var BrandRepositoryInterface
+     */
+    private $brandRepository;
+
+    /**
+     * @var CategoryRepositoryInterface
+     */
+    private $categoryRepository;
+
     /**
      * ProductRepository constructor.
      * @param Product $model
+     * @param BrandRepositoryInterface $brandRepository
+     * @param CategoryRepositoryInterface $categoryRepository
      */
-    public function __construct(Product $model)
+    public function __construct(
+        Product $model,
+        BrandRepositoryInterface $brandRepository,
+        CategoryRepositoryInterface $categoryRepository
+    )
     {
         parent::__construct($model);
+        $this->brandRepository = $brandRepository;
+        $this->categoryRepository = $categoryRepository;
     }
 
     /**
@@ -82,8 +101,8 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         if (!$this->model->whereTitle($title)->exists()) {
             parent::create([
                 'title' => $title,
-                'brand_id' => Brand::whereTitle($brand)->pluck('id')->first(),
-                'category_id' => Category::whereTitle($category)->pluck('id')->first(),
+                'brand_id' => $this->brandRepository->newQuery()->whereTitle($brand)->pluck('id')->first(),
+                'category_id' => $this->categoryRepository->newQuery()->whereTitle($category)->pluck('id')->first(),
                 'slug' => \Str::slug($title),
                 'intro' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                 'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
